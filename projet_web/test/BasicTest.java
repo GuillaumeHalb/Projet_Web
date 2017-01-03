@@ -39,23 +39,23 @@ public class BasicTest extends UnitTest {
 	    // Create a new user and save it
 	    User bob = new User("bob@gmail.com", "secret", "Bob").save();
 	    
-	    // Create a new post
-	    new Advice(bob, "My first post", "Hello world").save();
+	    // Create a new advice
+	    new Advice(bob, "My first advice", "Hello world").save();
 	    
-	    // Test that the post has been created
+	    // Test that the advice has been created
 	    assertEquals(1, Advice.count());
 	    
-	    // Retrieve all posts created by Bob
-	    List<Advice> bobPosts = Advice.find("byAuthor", bob).fetch();
+	    // Retrieve all advices created by Bob
+	    List<Advice> bobAdvises = Advice.find("byAuthor", bob).fetch();
 	    
 	    // Tests
-	    assertEquals(1, bobPosts.size());
-	    Advice firstPost = bobPosts.get(0);
-	    assertNotNull(firstPost);
-	    assertEquals(bob, firstPost.author);
-	    assertEquals("My first post", firstPost.title);
-	    assertEquals("Hello world", firstPost.content);
-	    assertNotNull(firstPost.postedAt);
+	    assertEquals(1, bobAdvises.size());
+	    Advice firstAdvice = bobAdvises.get(0);
+	    assertNotNull(firstAdvice);
+	    assertEquals(bob, firstAdvice.author);
+	    assertEquals("My first advice", firstAdvice.title);
+	    assertEquals("Hello world", firstAdvice.content);
+	    assertNotNull(firstAdvice.postedAt);
 	}
 	
 	@Test
@@ -63,11 +63,11 @@ public class BasicTest extends UnitTest {
 	    // Create a new user and save it
 	    User bob = new User("bob@gmail.com", "secret", "Bob").save();
 	 
-	    // Create a new post
-	    Advice bobAdvice = new Advice(bob, "My first post", "Hello world").save();
+	    // Create a new advice
+	    Advice bobAdvice = new Advice(bob, "My first advice", "Hello world").save();
 	 
-	    // Post a first comment
-	    new Comment(bobAdvice, "Jeff", "Nice post").save();
+	    // advice a first comment
+	    new Comment(bobAdvice, "Jeff", "Nice advice").save();
 	    new Comment(bobAdvice, "Tom", "I knew that !").save();
 	 
 	    // Retrieve all comments
@@ -79,7 +79,7 @@ public class BasicTest extends UnitTest {
 	    Comment firstComment = bobAdviceComments.get(0);
 	    assertNotNull(firstComment);
 	    assertEquals("Jeff", firstComment.author);
-	    assertEquals("Nice post", firstComment.content);
+	    assertEquals("Nice advice", firstComment.content);
 	    assertNotNull(firstComment.postedAt);
 	 
 	    Comment secondComment = bobAdviceComments.get(1);
@@ -94,11 +94,11 @@ public class BasicTest extends UnitTest {
 	    // Create a new user and save it
 	    User bob = new User("bob@gmail.com", "secret", "Bob").save();
 	 
-	    // Create a new post
-	    Advice bobAdvice = new Advice(bob, "My first post", "Hello world").save();
+	    // Create a new advice
+	    Advice bobAdvice = new Advice(bob, "My first advice", "Hello world").save();
 	 
-	    // Post a first comment
-	    bobAdvice.addComment("Jeff", "Nice post");
+	    // advice a first comment
+	    bobAdvice.addComment("Jeff", "Nice advice");
 	    bobAdvice.addComment("Tom", "I knew that !");
 	 
 	    // Count things
@@ -106,7 +106,7 @@ public class BasicTest extends UnitTest {
 	    assertEquals(1, Advice.count());
 	    assertEquals(2, Comment.count());
 	 
-	    // Retrieve Bob's post
+	    // Retrieve Bob's advice
 	    bobAdvice = Advice.find("byAuthor", bob).first();
 	    assertNotNull(bobAdvice);
 	 
@@ -114,12 +114,49 @@ public class BasicTest extends UnitTest {
 	    assertEquals(2, bobAdvice.comments.size());
 	    assertEquals("Jeff", bobAdvice.comments.get(0).author);
 	    
-	    // Delete the post
+	    // Delete the advice
 	    bobAdvice.delete();
 	    
 	    // Check that all comments have been deleted
 	    assertEquals(1, User.count());
 	    assertEquals(0, Advice.count());
 	    assertEquals(0, Comment.count());
+	}
+	
+	@Test
+	public void fullTest() {
+	    Fixtures.loadModels("data.yml");
+	 
+	    // Count things
+	    assertEquals(2, User.count());
+	    assertEquals(3, Advice.count());
+	    assertEquals(3, Comment.count());
+	 
+	    // Try to connect as users
+	    assertNotNull(User.connect("bob@gmail.com", "secret"));
+	    assertNotNull(User.connect("jeff@gmail.com", "secret"));
+	    assertNull(User.connect("jeff@gmail.com", "badpassword"));
+	    assertNull(User.connect("tom@gmail.com", "secret"));
+	 
+	    // Find all of Bob's advises
+	    List<Advice> bobadvices = Advice.find("author.email", "bob@gmail.com").fetch();
+	    assertEquals(2, bobadvices.size());
+	 
+	    // Find all comments related to Bob's advises
+	    List<Comment> bobComments = Comment.find("advice.author.email", "bob@gmail.com").fetch();
+	    assertEquals(3, bobComments.size());
+	 
+	    // Find the most recent advice
+	    Advice frontAdvice = Advice.find("order by postedAt desc").first();
+	    assertNotNull(frontAdvice);
+	    assertEquals("About the model layer", frontAdvice.title);
+	 
+	    // Check that this advice has two comments
+	    assertEquals(2, frontAdvice.comments.size());
+	 
+	    // advice a new comment
+	    frontAdvice.addComment("Jim", "Hello guys");
+	    assertEquals(3, frontAdvice.comments.size());
+	    assertEquals(4, Comment.count());
 	}
 }
