@@ -28,6 +28,15 @@ public class Advice extends Model {
         this.postedAt = new Date();
     }
     
+    public Advice previous() {
+        return Advice.find("postedAt < ? order by postedAt desc", postedAt).first();
+    }
+     
+    public Advice next() {
+        return Advice.find("postedAt > ? order by postedAt asc", postedAt).first();
+    }
+
+    
     //TODO : ajouter comme attribut la liste des éléments réferant ( actions etc )
     //TODO : voir pour le type d'investissement ( peut etre avec un enum); la plus ou moins value; indice de confiance
 

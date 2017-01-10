@@ -5,6 +5,24 @@
     <p class="success">${flash.success}</p>
 #{/if}
  
+ <ul id="pagination">
+    #{if advice.previous()}
+        <li id="previous">
+            <a href="@{Application.show(advice.previous().id)}">
+                ${advice.previous().title}
+            </a>
+        </li>
+    #{/if}
+    #{if advice.next()}
+        <li id="next">
+            <a href="@{Application.show(advice.next().id)}">
+                ${advice.next().title}
+            </a>
+        </li>
+    #{/if}
+</ul>
+ 
+ 
 #{display advice:advice, as:'full' /}
 
  
