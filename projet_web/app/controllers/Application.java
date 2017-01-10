@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.libs.*;
 
 import java.util.*;
 
@@ -13,8 +14,8 @@ public class Application extends Controller {
 
         Advice frontAdvice = Advice.find("order by postedAt desc").first();
         List<Advice> olderAdvices = Advice.find(
-            "order by postedAt desc"
-        ).from(1).fetch(10);
+                                                "order by postedAt desc"
+                                                ).from(1).fetch(10);
         render(frontAdvice, olderAdvices);
     }
 
@@ -28,4 +29,10 @@ public class Application extends Controller {
         Advice advice = Advice.findById(id);
         render(advice);
     }
+
+    public static void captcha() {
+        Images.Captcha captcha = Images.captcha();
+        renderBinary(captcha);
+    }
+
 }
