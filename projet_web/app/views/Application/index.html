@@ -1,54 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-
  
 #{if frontAdvice}
-    <div class="Advice">
-        <h2 class="Advice-title">
-            <a href="#">${frontAdvice.title}</a>
-        </h2>
-        <div class="Advice-metadata">
-            <span class="Advice-author">by ${frontAdvice.author.fullname}</span>
-            <span class="Advice-date">${frontAdvice.postedAt.format('MMM dd')}</span>
-            <span class="Advice-comments">
-                &nbsp;|&nbsp; 
-                ${frontAdvice.comments.size() ?: 'no'} 
-                comment${frontAdvice.comments.size().pluralize()}
-                #{if frontAdvice.comments}
-                    , latest by ${frontAdvice.comments[-1].author}
-                #{/if}
-            </span>
-        </div>
-        <div class="Advice-content">
-            ${frontAdvice.content.nl2br()}
-        </div>
-    </div>
     
-    #{if olderAdvices}
-        <div class="older-Advices">    
-            <h3>Older Advices <span class="from">from this blog</span></h3>
+    #{display advice:frontAdvice, as:'home' /}
+    
+    #{if olderAdvices.size()}
+    
+        <div class="older-Advices">
+            <h3>Older advices <span class="from">from this blog</span></h3>
         
             #{list items:olderAdvices, as:'oldAdvice'}
-                <div class="Advice">
-                    <h2 class="Advice-title">
-                        <a href="#">${oldAdvice.title}</a>
-                    </h2>
-                    <div class="Advice-metadata">
-                        <span class="Advice-author">
-                            by ${oldAdvice.author.fullname}
-                        </span>
-                        <span class="Advice-date">
-                            ${oldAdvice.postedAt.format('dd MMM yy')}
-                        </span>
-                        <div class="Advice-comments">
-                            ${oldAdvice.comments.size() ?: 'no'} 
-                            comment${oldAdvice.comments.size().pluralize()}
-                            #{if oldAdvice.comments}
-                                - latest by ${oldAdvice.comments[-1].author}
-                            #{/if}
-                        </div>
-                    </div>
-                </div>
+              #{display advice:oldAdvice, as:'teaser' /}
+
             #{/list}
         </div>
         
@@ -61,4 +25,3 @@
         There is currently nothing to read here.
     </div>
 #{/else}
-

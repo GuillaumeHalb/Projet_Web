@@ -1,0 +1,51 @@
+*{ Display a Advice in one of these modes: 'full', 'home' or 'teaser' }*
+ 
+<div class="Advice ${_as == 'teaser' ? 'teaser' : ''}">
+    <h2 class="Advice-title">
+        <a href="#">${_advice.title}</a>
+    </h2>
+    <div class="Advice-metadata">
+        <span class="Advice-author">by ${_advice.author.fullname}</span>,
+        <span class="Advice-date">${_advice.postedAt.format('dd MMM yy')}</span>
+        #{if _as != 'full'}
+            <span class="Advice-comments">
+                &nbsp;|&nbsp; ${_advice.comments.size() ?: 'no'} 
+                comment${_advice.comments.size().pluralize()}
+                #{if _advice.comments}
+                    , latest by ${_advice.comments[-1].author}
+                #{/if}
+            </span>
+        #{/if}
+    </div>
+    #{if _as != 'teaser'}
+        <div class="Advice-content">
+            <div class="about">Detail: </div>
+            ${_advice.content.nl2br()}
+        </div>
+    #{/if}
+</div>
+ 
+#{if _as == 'full'}
+    <div class="comments">
+        <h3>
+            ${_advice.comments.size() ?: 'no'} 
+            comment${_advice.comments.size().pluralize()}
+        </h3>
+        
+        #{list items:_advice.comments, as:'comment'}
+            <div class="comment">
+                <div class="comment-metadata">
+                    <span class="comment-author">by ${comment.author},</span>
+                    <span class="comment-date">
+                        ${comment.postedAt.format('dd MMM yy')}
+                    </span>
+                </div>
+                <div class="comment-content">
+                    <div class="about">Detail: </div>
+                    ${comment.content.escape().nl2br()}
+                </div>
+            </div>
+        #{/list}
+        
+    </div>
+#{/if}

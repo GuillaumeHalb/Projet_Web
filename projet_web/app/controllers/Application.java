@@ -23,4 +23,9 @@ public class Application extends Controller {
         renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
+    
+    public static void show(Long id) {
+        Advice advice = Advice.findById(id);
+        render(advice);
+    }
 }
