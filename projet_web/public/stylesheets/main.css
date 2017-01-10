@@ -101,35 +101,35 @@ body {
     padding: 20px;
 }
 
-/** Post **/
+/** Advice **/
 
-.post .post-title {
+.Advice .Advice-title {
     margin: 0;
 }
 
-.post .post-title a {
+.Advice .Advice-title a {
     font-size: 36px;
     color: #F5C2CC;
     text-decoration: none;
 }
 
-.post .post-metadata {
+.Advice .Advice-metadata {
     color: #BAC36E;
     display: block;
     font-size: 70%;
     display: inline-block;
 }
 
-.post .post-author {
+.Advice .Advice-author {
     font-size: 130%;
     font-weight: bold;
 }
 
-.post .post-metadata a {
+.Advice .Advice-metadata a {
     color: #9FA85D;
 }
 
-.post .post-content {
+.Advice .Advice-content {
     position: relative;
     background: #fff;
     padding: 10px;
@@ -139,7 +139,7 @@ body {
     -webkit-box-shadow: 0 2px 0 #BBBBBB;
 }
 
-.post .about {
+.Advice .about {
     text-indent: -999em;
     display: block;
     width: 0; 
@@ -154,38 +154,38 @@ body {
 }
 
 
-/** Older posts **/
+/** Older Advices **/
 
-.older-posts h3 {
+.older-Advices h3 {
     color: #869AB1;
     font-size: 28px;
     margin-bottom: 15px;
 }
 
-.older-posts h3 .from {
+.older-Advices h3 .from {
     font-weight: normal;
     font-size: 70%;
 }
 
-.older-posts .post {
+.older-Advices .Advice {
     margin-bottom: 15px;
     border-left: 3px solid #869AB1;
     padding-left: 10px;
 }
 
-.older-posts .post-title a {
+.older-Advices .Advice-title a {
     padding: 0;
     color: #131921;
     font-size: 20px;
 }
 
-.older-posts .post-metadata {
+.older-Advices .Advice-metadata {
     color: #869AB1;
     padding: 0;
     font-size: 12px;
 }
 
-.older-posts .post-metadata a {
+.older-Advices .Advice-metadata a {
     color: #869AB1;
 }
 
@@ -494,29 +494,29 @@ tr.odd {
     display: none;
 }
 
-/** My posts **/
+/** My Advices **/
 
-#admin .post {
+#admin .Advice {
     background: #fff;
     padding: 4px;
     margin: 0;
     font-size: 90%;
 }
 
-#admin .post.odd {
+#admin .Advice.odd {
     background: #C0CBE5;
 }
 
-#admin .post a {
+#admin .Advice a {
     color: #444;
 }
 
-#newPost {
+#newAdvice {
     border-top: 1px dotted #C0CBE5;
     padding-top: 15px;
 }
 
-#newPost a {
+#newAdvice a {
     background: #C88116;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -528,7 +528,7 @@ tr.odd {
     -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
 }
 
-#newPost a span {
+#newAdvice a span {
     background: #7D510E;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -537,7 +537,7 @@ tr.odd {
     top: -1px;
 }
 
-#postContent {
+#AdviceContent {
     width: 100%;
     height: 300px;
 }
