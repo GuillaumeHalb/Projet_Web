@@ -3,6 +3,7 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.libs.*;
+import play.cache.*;
 
 import java.util.*;
 
@@ -30,8 +31,10 @@ public class Application extends Controller {
         render(advice);
     }
 
-    public static void captcha() {
+    public static void captcha(String id) {
         Images.Captcha captcha = Images.captcha();
+        String code = captcha.getText("#E4EAFD");
+        Cache.set(id, code, "10mn");
         renderBinary(captcha);
     }
 
