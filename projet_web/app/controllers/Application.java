@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.data.validation.Required;
 import play.mvc.*;
 import play.libs.*;
 import play.cache.*;
@@ -37,5 +38,14 @@ public class Application extends Controller {
         Cache.set(id, code, "10mn");
         renderBinary(captcha);
     }
-
+   
+    public static void postComment(Long adviceId, @Required String author, @Required String content) {
+        Advice advice = Advice.findById(adviceId);
+        if(validation.hasErrors()) {
+            render("Application/show.html", advice);
+        }
+        advice.addComment(author, content);
+        flash.success("Thanks for posting %s", author);
+        show(adviceId);
+    }
 }
