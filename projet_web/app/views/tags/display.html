@@ -2,7 +2,7 @@
  
 <div class="Advice ${_as == 'teaser' ? 'teaser' : ''}">
     <h2 class="Advice-title">
-        <a href="#">${_advice.title}</a>
+        <a href="@{Application.show(_advice.id)}">${_advice.title}</a>
     </h2>
     <div class="Advice-metadata">
         <span class="Advice-author">by ${_advice.author.fullname}</span>,

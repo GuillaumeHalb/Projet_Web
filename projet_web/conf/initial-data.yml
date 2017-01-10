@@ -50,19 +50,19 @@ Comment(c1):
     content:        >
                     You are right !
     postedAt:       2009-06-14
-    Advice:           firstBobAdvice
+    advice:           firstBobAdvice
     
 Comment(c2):
     author:         Mike
     content:        >
                     I knew that ...
     postedAt:       2009-06-15
-    Advice:           firstBobAdvice    
+    advice:           firstBobAdvice    
     
 Comment(c3):
     author:         Tom
     content:        >
                     This Advice is useless ?
     postedAt:       2009-04-05
-    Advice:           secondBobAdvice    
+    advice:           secondBobAdvice    
                  
