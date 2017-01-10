@@ -31,7 +31,7 @@ public class Advice extends Model {
     //TODO : ajouter comme attribut la liste des éléments réferant ( actions etc )
     //TODO : voir pour le type d'investissement ( peut etre avec un enum); la plus ou moins value; indice de confiance
 
-    
+    //TODO : réfléchir pour la catégorie
     //TODO : modifier le conseil, effacer le conseil ( ou alors dans la classe user ?)
     
     public Advice addComment(String author, String content) {
