@@ -20,8 +20,12 @@ public class Advice extends Model {
     @OneToMany(mappedBy="advice", cascade=CascadeType.ALL)
     public List<Comment> comments;
      
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    public Set<Tag> tags;
+    
     public Advice(User author, String title, String content) { 
         this.comments = new ArrayList<Comment>();
+        this.tags = new TreeSet<Tag>();
         this.author = author;
         this.title = title;
         this.content = content;
@@ -49,6 +53,15 @@ public class Advice extends Model {
         this.save();
         return this;
     }
+    
+    public Advice tagItWith(String name) {
+        tags.add(Tag.findOrCreateByName(name));
+        return this;
+    }
 
- 
+    public static List<Advice> findTaggedWith(String tag) {
+        return Advice.find(
+            "select distinct p from Advice p join p.tags as t where t.name = ?", tag
+        ).fetch();
+    }
 }
