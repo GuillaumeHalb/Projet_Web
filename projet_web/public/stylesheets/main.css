@@ -55,6 +55,7 @@ body {
     margin: 20px 0;
     color: #3C4313;
     position: relative;
+border-radius: 10px;
     -webkit-border-radius: 16px;
     -webkit-box-shadow: 0 2px 0 #93A045;
     -moz-border-radius: 16px;
@@ -134,6 +135,7 @@ body {
     background: #fff;
     padding: 10px;
     margin: 10px 0 50px 0;
+border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-box-shadow: 0 2px 0 #BBBBBB;
