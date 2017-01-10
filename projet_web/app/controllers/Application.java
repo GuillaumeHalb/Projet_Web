@@ -10,6 +10,7 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
+
         Advice frontAdvice = Advice.find("order by postedAt desc").first();
         List<Advice> olderAdvices = Advice.find(
             "order by postedAt desc"
