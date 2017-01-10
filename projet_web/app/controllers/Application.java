@@ -29,8 +29,10 @@ public class Application extends Controller {
     
     public static void show(Long id) {
         Advice advice = Advice.findById(id);
-        render(advice);
+        String randomID = Codec.UUID();
+        render(advice, randomID);
     }
+
 
     public static void captcha(String id) {
         Images.Captcha captcha = Images.captcha();
