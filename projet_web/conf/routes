@@ -13,8 +13,8 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 # Catch all
-GET     /advices/{id}                             Application.show
 POST    /advices/{adviceId}/comments                Application.postComment
+GET     /advices/{id}                             Application.show
 *       /{controller}/{action}                  {controller}.{action}
 
 
