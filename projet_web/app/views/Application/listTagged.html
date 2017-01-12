@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Advices tagged with ' + tag /}
+ 
+*{********* Title ********* }*
+ 
+#{if advices.size() > 1}
+   <h3>There are ${advices.size()} advices tagged '${tag}'</h3>
+#{/if}
+#{elseif advices}
+    <h3>There is 1 advice tagged '${tag}'</h3>
+#{/elseif}
+#{else}
+    <h3>No advice tagged '${tag}'</h3>
+#{/else}
+ 
+*{********* Advices list *********}*
+ 
+<div class="older-Advices">
+    #{list items:advices, as:'post'}
+        #{display advice:advice, as:'teaser' /}
+    #{/list}
+</div>

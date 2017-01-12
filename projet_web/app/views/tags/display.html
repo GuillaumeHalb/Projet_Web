@@ -25,6 +25,24 @@
     #{/if}
 </div>
  
+ #{if _as != 'full'}
+    <span class="Advice-comments">
+        &nbsp;|&nbsp; ${_advice.comments.size() ?: 'no'}
+        comment${_advice.comments.size().pluralize()}
+        #{if _advice.comments}
+            , latest by ${_advice.comments[0].author}
+        #{/if}
+    </span>
+#{/if}
+#{elseif _advice.tags}
+    <span class="Advice-tags">
+        - Tagged
+        #{list items:_advice.tags, as:'tag'}
+    		<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+		#{/list}
+    </span>
+#{/elseif}
+ 
 #{if _as == 'full'}
     <div class="comments">
         <h3>
@@ -49,3 +67,5 @@
         
     </div>
 #{/if}
+
+

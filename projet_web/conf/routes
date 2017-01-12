@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /captcha                                Application.captcha
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -14,7 +14,22 @@ GET     /public/                                staticDir:public
 
 # Catch all
 POST    /advices/{adviceId}/comments                Application.postComment
-GET     /advices/{id}                             Application.show
+GET     /advices/{<[0-9]+>id}                             Application.show
+GET     /advices/{tag}                    Application.listTagged
 *       /{controller}/{action}                  {controller}.{action}
 
+GET     /captcha                                Application.captcha
+
+# Administration
+GET     /admin/?                                Admin.index
+*       /admin                                  module:crud
+
+
+# Import CRUD routes
+*      /admin              module:crud
+
+
+
+# Import Secure routes
+*       /                                       module:secure
 

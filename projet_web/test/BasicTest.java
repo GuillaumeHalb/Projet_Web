@@ -166,15 +166,18 @@ public class BasicTest extends UnitTest {
 	    User bob = new User("bob@gmail.com", "secret", "Bob").save();
 	 
 	    // Create a new post
+
 	    Advice bobAdvice = new Advice(bob, "My first post", "Hello world").save();
 	    Advice anotherBobAdvice = new Advice(bob, "Hop", "Hello world").save();
-	 
+
 	    // Well
 	    assertEquals(0, Advice.findTaggedWith("Red").size());
 	 
 	    // Tag it now
+
 	    bobAdvice.tagItWith("Red").tagItWith("Blue").save();
 	    anotherBobAdvice.tagItWith("Red").tagItWith("Green").save();
+
 	 
 	    // Check
 	    assertEquals(2, Advice.findTaggedWith("Red").size());
@@ -189,6 +192,7 @@ public class BasicTest extends UnitTest {
 	        "[{pound=1, tag=Blue}, {pound=1, tag=Green}, {pound=2, tag=Red}]",
 	        cloud.toString()
 	    );
+
 
 	}
 

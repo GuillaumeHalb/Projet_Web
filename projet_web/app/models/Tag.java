@@ -1,15 +1,14 @@
 package models;
- 
 import java.util.*;
 import javax.persistence.*;
  
 import play.db.jpa.*;
- 
+
+
 @Entity
 public class Tag extends Model implements Comparable<Tag> {
- 
     public String name;
- 
+
     private Tag(String name) {
         this.name = name;
     }
@@ -29,6 +28,7 @@ public class Tag extends Model implements Comparable<Tag> {
         }
         return tag;
     }
+
     
     public static List<Map> getCloud() {
         List<Map> result = Tag.find(
@@ -37,3 +37,6 @@ public class Tag extends Model implements Comparable<Tag> {
         return result;
     }
 }
+
+
+

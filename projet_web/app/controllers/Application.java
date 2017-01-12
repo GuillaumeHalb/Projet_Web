@@ -29,8 +29,10 @@ public class Application extends Controller {
     
     public static void show(Long id) {
         Advice advice = Advice.findById(id);
-        render(advice);
+        String randomID = Codec.UUID();
+        render(advice, randomID);
     }
+
 
     public static void captcha(String id) {
         Images.Captcha captcha = Images.captcha();
@@ -39,13 +41,29 @@ public class Application extends Controller {
         renderBinary(captcha);
     }
    
-    public static void postComment(Long adviceId, @Required String author, @Required String content) {
+    public static void postComment(
+                                   Long adviceId, 
+                                   @Required(message="Author is required") String author, 
+                                   @Required(message="A message is required") String content, 
+                                   @Required(message="Please type the code") String code, 
+                                   String randomID) 
+    {
         Advice advice = Advice.findById(adviceId);
+        validation.equals(
+                          code, Cache.get(randomID)
+                          ).message("Invalid code. Please type it again");
         if(validation.hasErrors()) {
-            render("Application/show.html", advice);
+            render("Application/show.html", advice, randomID);
         }
         advice.addComment(author, content);
         flash.success("Thanks for posting %s", author);
+        Cache.delete(randomID);
         show(adviceId);
     }
+    
+    public static void listTagged(String tag) {
+        List<Advice> advices = Advice.findTaggedWith(tag);
+        render(tag, advices);
+    }
+
 }
