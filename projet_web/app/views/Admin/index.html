@@ -1,3 +1,13 @@
 #{extends 'admin.html' /}
  
-Welcome ${user}!
+<h3>Welcome ${user}, <span>you have written ${advices.size() ?: 'no'} ${advices.pluralize('advice', 'advices')} so far</span></h3>
+ 
+#{list items:advices, as:'advice'}
+    <p class="Advice ${advice_parity}">
+        <a href="@{Admin.form(advice.id)}">${advice.title}</a>
+    </p>
+#{/list}
+ 
+<p id="newAdvice" >
+	<a href="@{form()}"><span>+</span> write a new advice</a>
+</p>

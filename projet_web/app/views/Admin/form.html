@@ -1,0 +1,49 @@
+#{extends 'admin.html' /}
+ 
+#{ifnot advice?.id}
+    <h3>Write, <span>a new advice</span></h3>
+#{/ifnot}
+#{else}
+    <h3>Edit, <span>this advice</span></h3>
+#{/else}
+ 
+#{form @save(advice?.id)}
+ 
+    #{ifErrors}
+        <p class="error">
+            Please correct these errors.
+        </p>
+    #{/ifErrors}
+     
+    <p>
+        #{field 'title'}
+        <label>advice title:</label>
+        <input type="text" name="${field.name}" 
+            value="${advice?.title}" />
+        <span class="error">#{error 'advice.title' /}</span>
+        #{/field}
+    </p>
+ 
+    <p>
+        #{field 'content'}
+        <label>Write here:</label>
+        <textarea name="${field.name}">
+          ${advice?.content}
+        </textarea>
+        <span class="error">#{error 'advice.title' /}</span>
+        #{/field}
+    </p>
+ 
+    <p>
+        #{field 'tags'}
+        <label>Enter some tags:</label>
+        <input type="text" size="50" 
+            name="${field.name}" value="${advice?.tags?.join(' ')}" />
+        #{/field}
+    </p>
+    
+    <p>
+        <input type="submit" value="Publish this advice to the blog" />
+    </p>
+    
+#{/form}

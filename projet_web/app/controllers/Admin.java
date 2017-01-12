@@ -17,9 +17,48 @@ public class Admin extends Controller {
             renderArgs.put("user", user.fullname);
         }
     }
- 
+    
     public static void index() {
-        render();
+        String user = Security.connected();
+        List<Advice> advices = Advice.find("author.email", user).fetch();
+        render(advices);
     }
     
+    public static void form(Long id) {
+        if(id != null) {
+            Advice advice = Advice.findById(id);
+            render(advice);
+        }
+        render();
+    }
+     
+    public static void save(Long id, String title, String content, String tags) {
+        Advice advice;
+        if(id == null) {
+            // Create advice
+            User author = User.find("byEmail", Security.connected()).first();
+            advice = new Advice(author, title, content);
+        } else {
+            // Retrieve advice
+            advice = Advice.findById(id);
+            // Edit
+            advice.title = title;
+            advice.content = content;
+            advice.tags.clear();
+        }
+        // Set tags list
+        for(String tag : tags.split("\\s+")) {
+            if(tag.trim().length() > 0) {
+                advice.tags.add(Tag.findOrCreateByName(tag));
+            }
+        }
+        // Validate
+        validation.valid(advice);
+        if(validation.hasErrors()) {
+            render("@form", advice);
+        }
+        // Save
+        advice.save();
+        index();
+    }
 }
