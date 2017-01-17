@@ -28,6 +28,9 @@ public class Advice extends Model {
     
     @ManyToMany(cascade=CascadeType.PERSIST)
     public Set<Tag> tags;
+    
+    @ManyToOne
+    public Basket basket;
      
     public Advice(User author, String title, String content) {
         this.comments = new ArrayList<Comment>();
