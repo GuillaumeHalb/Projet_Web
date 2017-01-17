@@ -1,7 +1,7 @@
 /** Main layout **/
 
 html, body {
-    background: #364B66 !important;
+    background: #364b66 !important;
     font-family: Helvetica, Arial, Sans !important;
 }
 
@@ -169,7 +169,13 @@ border-radius: 10px;
 .Advice .Advice-tags {
     position:relative;
     left:60%;
-    
+    color: black;
+    font-weight: bold;
+}
+
+span a {
+    font-size: 20px;
+    color: #00CED1;
 }
 
 /** Older Advices **/
@@ -342,8 +348,9 @@ form label {
     position: relative;
     color: #869AB1;
     font-size: 90%;
-    top: -20px;
-    margin-bottom: 30px;
+    top: 0px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 #pagination a {
@@ -353,7 +360,6 @@ form label {
 
 #pagination #previous {
     position: absolute;
-    top: 0;
     left: 0;
 }
 
