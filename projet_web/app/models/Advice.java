@@ -31,6 +31,9 @@ public class Advice extends Model {
     
     @ManyToMany(cascade=CascadeType.PERSIST)
     public Set<Tag> tags;
+    
+    @ManyToOne
+    public Basket basket;
      
     
 

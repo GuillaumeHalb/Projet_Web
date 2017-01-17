@@ -77,4 +77,21 @@ public class Application extends Controller {
         render(tag, advices);
     }
 
+    
+    public static void signUp(
+            @Required(message = "email required") String email,
+            @Required(message = "password required") String password,
+            @Required(message = "full name required") String fullName) 
+    {
+            User usr = new User(email, password, fullName).save();
+            flash.success("Thanks for registering");
+            render(email, fullName);
+    }
+    
+    public static void search(@Required(message = "String is required")String recherche) {
+        List<Advice> myList;
+        String qr = "select distinct a from Advice a where upper(a.title) like upper('%" + recherche + "%')";
+        myList = Advice.find(qr).fetch();
+        render(recherche, myList);
+    }
 }

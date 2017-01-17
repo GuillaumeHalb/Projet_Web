@@ -1,16 +1,81 @@
-# Test data
+# Tags : about 20 companies
 
-Tag(play):
-    name:           Play
+Tag(apple):
+    name:           Apple
  
-Tag(architecture):
-    name:           Architecture
+Tag(abbVie):
+    name:           AbbVie
  
-Tag(test):
-    name:           Test
+Tag(amazon):
+    name:           Amazon
  
-Tag(mvc):
-    name:           MVC
+Tag(americanExpress):
+    name:           AmericanExpress
+
+Tag(boeing):
+    name:           Boeing
+
+Tag(bankOfAmerica):
+    name:           BankOfAmerica
+
+Tag(blackrock):
+    name:           Blackrock
+
+Tag(colgate):
+    name:           Colgate
+
+Tag(cisco):
+    name:           Cisco
+
+Tag(waltDisney):
+    name:           WaltDisney
+
+Tag(ford):
+    name:           Ford
+
+Tag(facebook):
+    name:           Facebook
+
+Tag(fedEx):
+    name:           FedEx
+
+Tag(fox):
+    name:           Fox
+
+Tag(generalMotors):
+    name:           GeneralMotors
+ 
+Tag(alphabet):
+    name:           Alphabet
+ 
+Tag(goldmanSachs):
+    name:           GoldmanSachs
+ 
+Tag(intel):
+    name:           Intel
+
+Tag(jpMorgan):
+    name:           JPMorgan
+
+Tag(cocacola):
+    name:           CocaCola
+
+Tag(mastercard):
+    name:           MasterCard
+
+Tag(mircosoft):
+    name:           Microsoft
+
+Tag(nike):
+    name:           Nike
+
+Tag(oracle):
+    name:           Oracle
+
+Tag(paypal):
+    name:           PayPal
+
+#users
 
 User(bob):
     email:          bob@gmail.com
@@ -23,39 +88,43 @@ User(jeff):
     password:       secret
     fullname:       Jeff    
     
+User(john):
+    email:          john@gmail.com
+    password:       secret
+    fullname:       John
+    isAdmin:        true
+    
+User(joe):
+    email:          joe@gmail.com
+    password:       secret
+    fullname:       Joe  
+
 Advice(firstBobAdvice):
-    title:          About the model layer
+    title:          Facebook about to grow 8%
     postedAt:       2009-06-14
     author:         bob
+    tags:
+                    - facebook
     content:        >
-                    The model has a central position in a Play! application. It is the domain-specific 
-                    representation of the information on which the application operates.
-                    
-                    Martin fowler defines it as:
-                        
-                    Responsible for representing concepts of the business, information about the 
-                    business situation, and business rules. State that reflects the business situation 
-                    is controlled and used here, even though the technical details of storing it are 
-                    delegated to the infrastructure. This layer is the heart of business software.
+                    According to the current tendancy, Facebook stocks should grow about 8%
 
 Advice(secondBobAdvice):
-    title:          Just a test of YABE
+    title:          Alphabet 2% down
     postedAt:       2009-03-25
     author:         bob
+    tags:
+                    - alphabet
     content:        >
-                    Well, it's just a test.
+                    You maybe shouldn't invest in that stock
                     
 Advice(jeffAdvice):
-    title:          The MVC application
+    title:          Coca-Cola's new product
     postedAt:       2009-06-06
     author:         jeff
+    tags:
+                    - cocacola
     content:        >
-                    A Play! application follows the MVC architectural pattern as applied to the 
-                    architecture of the Web.
-                    
-                    This pattern splits the application into separate layers: the Presentation 
-                    layer and the Model layer. The Presentation layer is further split into a 
-                    View and a Controller layer.
+                    Coca-cola is about to lauch a new product, their stock are expected to grow up to 	12%.
                     
 Comment(c1):
     author:         Guest
@@ -78,14 +147,4 @@ Comment(c3):
     postedAt:       2009-04-05
     advice:           secondBobAdvice    
     
-Advice(jeffAdvice):
-    title:          The MVC application
-    postedAt:       2009-06-06
-    author:         jeff
-    tags:
-                    - play
-                    - architecture
-                    - mvc
-    content:        >
-                    A Play
-                 
+
