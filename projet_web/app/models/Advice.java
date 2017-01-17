@@ -22,6 +22,9 @@ public class Advice extends Model {
     @Required
     @ManyToOne
     public User author;
+
+    @Required
+    public int mark;
     
     @OneToMany(mappedBy="advice", cascade=CascadeType.ALL)
     public List<Comment> comments;
@@ -29,13 +32,16 @@ public class Advice extends Model {
     @ManyToMany(cascade=CascadeType.PERSIST)
     public Set<Tag> tags;
      
-    public Advice(User author, String title, String content) {
+    
+
+    public Advice(User author, String title, String content, int mark) {
         this.comments = new ArrayList<Comment>();
         this.tags = new TreeSet<Tag>();
         this.author = author;
         this.title = title;
         this.content = content;
         this.postedAt = new Date();
+        this.mark = mark;
     }
 
     
@@ -50,6 +56,13 @@ public class Advice extends Model {
     
     //TODO : ajouter comme attribut la liste des éléments réferant ( actions etc )
     //TODO : voir pour le type d'investissement ( peut etre avec un enum); la plus ou moins value; indice de confiance
+    public Advice addMark(int newMark) {
+        this.mark += newMark;
+        this.mark /= this.mark + newMark;
+        this.save();
+        return this;
+    }
+
 
     //TODO : réfléchir pour la catégorie
     //TODO : modifier le conseil, effacer le conseil ( ou alors dans la classe user ?)

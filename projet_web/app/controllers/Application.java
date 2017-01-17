@@ -61,6 +61,17 @@ public class Application extends Controller {
         show(adviceId);
     }
     
+    public static void updateMark(Long adviceId ,@Required (message="A mark is required")  int newMark) {
+        Advice advice = Advice.findById(adviceId);
+        if(validation.hasErrors()) {
+            render("Application/show.html",advice);
+        }
+        advice.addMark(newMark);
+        flash.success("Rating successfully added");
+        show(adviceId);
+    }
+    
+
     public static void listTagged(String tag) {
         List<Advice> advices = Advice.findTaggedWith(tag);
         render(tag, advices);

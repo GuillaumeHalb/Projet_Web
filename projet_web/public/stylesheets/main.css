@@ -132,7 +132,7 @@ border-radius: 10px;
 
 .Advice .Advice-content {
     position: relative;
-    background: #fff;
+    background: #fff   ;
     padding: 10px;
     margin: 10px 0 50px 0;
 border-radius: 10px;
@@ -155,6 +155,16 @@ border-radius: 10px;
 	left: 24px;
 }
 
+.Advice .mark {
+    position : relative;
+    display : block;
+    padding: 10px;
+    margin: 10px 0 50px 0;
+    color : #ff33b5;
+    top : -3em;
+    font-size: 85%;
+    font-weight: bold;
+}
 
 /** Older Advices **/
 
@@ -296,6 +306,8 @@ form label {
     color: #aaa;
     margin-bottom: 3px;
 }
+
+/** rating form **/
 
 #captcha{
     display: block;

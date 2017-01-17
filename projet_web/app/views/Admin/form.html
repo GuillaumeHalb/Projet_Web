@@ -33,6 +33,14 @@
         <span class="error">#{error 'advice.title' /}</span>
         #{/field}
     </p>
+
+    <p>
+      #{field 'mark'}
+      <label>mark this post<label>
+      <input> type="number" max="10"  size="10"
+      name="${field.name}" value="${advice?.mark}" />
+      #{/field}
+    </p>
  
     <p>
         #{field 'tags'}

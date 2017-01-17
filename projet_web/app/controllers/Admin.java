@@ -32,18 +32,19 @@ public class Admin extends Controller {
         render();
     }
      
-    public static void save(Long id, String title, String content, String tags) {
+    public static void save(Long id, String title, String content, String tags, int mark) {
         Advice advice;
         if(id == null) {
             // Create advice
             User author = User.find("byEmail", Security.connected()).first();
-            advice = new Advice(author, title, content);
+            advice = new Advice(author, title, content, mark);
         } else {
             // Retrieve advice
             advice = Advice.findById(id);
             // Edit
             advice.title = title;
             advice.content = content;
+            advice.mark = mark;
             advice.tags.clear();
         }
         // Set tags list
