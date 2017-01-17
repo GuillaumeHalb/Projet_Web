@@ -63,12 +63,14 @@ public class Application extends Controller {
     
     public static void updateMark(Long adviceId ,@Required (message="A mark is required")  int newMark) {
         Advice advice = Advice.findById(adviceId);
-        if(validation.hasErrors()) {
-            render("Application/show.html",advice);
+        validation.equals(newMark,0).message("Invalid value for mark. Insert a number between 1 and 10");
+        if(validation.hasErrors() || newMark==0) {
+            render("Application/show.html",advice,newMark);
         }
         advice.addMark(newMark);
         flash.success("Rating successfully added");
         show(adviceId);
+        
     }
     
 

@@ -18,6 +18,12 @@
         #{/if}
     </div>
     #{if _as != 'teaser'}
+    <span class="Advice-tags">
+      - Tagged
+      #{list items:_advice.tags, as:'tag'}
+      <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+	  #{/list}
+    </span>
         <div class="Advice-content">
             <div class="about">Detail: </div>
             ${_advice.content.nl2br()}
@@ -27,7 +33,8 @@
         </div>
     #{/if}
 </div>
- 
+
+
  #{if _as != 'full'}
     <span class="Advice-comments">
         &nbsp;|&nbsp; ${_advice.comments.size() ?: 'no'}
@@ -37,16 +44,13 @@
         #{/if}
     </span>
 #{/if}
-#{elseif _advice.tags}
-    <span class="Advice-tags">
-        - Tagged
-        #{list items:_advice.tags, as:'tag'}
-    		<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-		#{/list}
-    </span>
-#{/elseif}
+<!--#{elseif _advice.tags}
+
+#{/elseif}-->
  
 #{if _as == 'full'}
+
+    
     <div class="comments">
         <h3>
             ${_advice.comments.size() ?: 'no'} 

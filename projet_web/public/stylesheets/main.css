@@ -166,6 +166,12 @@ border-radius: 10px;
     font-weight: bold;
 }
 
+.Advice .Advice-tags {
+    position:relative;
+    left:60%;
+    
+}
+
 /** Older Advices **/
 
 .older-Advices h3 {
@@ -308,6 +314,11 @@ form label {
 }
 
 /** rating form **/
+.rating {
+    display: block;
+    padding: 10px;
+    margin: 0px 50px 10px 5px;
+}
 
 #captcha{
     display: block;

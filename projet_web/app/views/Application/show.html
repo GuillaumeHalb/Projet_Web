@@ -22,17 +22,25 @@
 </ul>
 
 #{display advice:advice, as:'full' /}
+<div class="rating">
+  <h3>Rate advice</h3>
 
-<!--<div class="rating">-->
-<h3>Rate advice</h3>
-#{form @Application.updateMark(advice.id)}
+  #{form @Application.updateMark(advice.id)}
 
-<p>
-  <label for="mark"> Give a mark from 0 to 10: </label>
-  <input typ="number" name="mark" id="mark" value="$(params.mark}"
-
-#{/form}
-<!--</div>-->
+  #{ifErrors}
+  <p class="error">
+    ${errors[0]}
+  </p>
+  #{/ifErrors}
+  <p>
+    <label for="mark"> Give a mark from 0 to 10: </label>
+    <input type="number" name="mark" id="mark" value="${params.mark}"
+  </p>
+  <p>
+    <input type="submit" value="Submit your rating" />
+  </p> 
+  #{/form}
+</div>
 
 <h3>Post a comment</h3>
 
