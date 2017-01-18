@@ -60,8 +60,13 @@ public class Advice extends Model {
     //TODO : ajouter comme attribut la liste des éléments réferant ( actions etc )
     //TODO : voir pour le type d'investissement ( peut etre avec un enum); la plus ou moins value; indice de confiance
     public Advice addMark(int newMark) {
-        this.mark += newMark;
-        this.mark /= this.mark + newMark;
+        int calculatedMark = this.mark + newMark;
+        if (calculatedMark != newMark) {
+            this.mark = calculatedMark/2;
+        }
+        else {
+            mark = newMark;
+        }
         this.save();
         return this;
     }

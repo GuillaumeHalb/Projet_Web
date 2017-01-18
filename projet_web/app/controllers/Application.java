@@ -61,13 +61,13 @@ public class Application extends Controller {
         show(adviceId);
     }
     
-    public static void updateMark(Long adviceId ,@Required (message="A mark is required")  int newMark) {
+    public static void updateMark(Long adviceId ,@Required (message="A mark is required")  int mark) {
         Advice advice = Advice.findById(adviceId);
-        validation.equals(newMark,0).message("Invalid value for mark. Insert a number between 1 and 10");
-        if(validation.hasErrors() || newMark==0) {
-            render("Application/show.html",advice,newMark);
+        validation.isTrue("invalid",mark>0 && mark <= 10).message("Invalid value for mark. Insert a number between 1 and 10");
+        if(validation.hasErrors()) {
+            render("Application/show.html",advice,mark);
         }
-        advice.addMark(newMark);
+        advice.addMark(mark);
         flash.success("Rating successfully added");
         show(adviceId);
         
@@ -81,13 +81,13 @@ public class Application extends Controller {
 
     
     public static void signUp(
-            @Required(message = "email required") String email,
-            @Required(message = "password required") String password,
-            @Required(message = "full name required") String fullName) 
+                              @Required(message = "email required") String email,
+                              @Required(message = "password required") String password,
+                              @Required(message = "full name required") String fullName) 
     {
-            User usr = new User(email, password, fullName).save();
-            flash.success("Thanks for registering");
-            render(email, fullName);
+        User usr = new User(email, password, fullName).save();
+        flash.success("Thanks for registering");
+        render(email, fullName);
     }
     
     public static void search(@Required(message = "String is required")String recherche) {

@@ -66,33 +66,8 @@
         #{/if}
     </span>
 #{/if}
-<!--#{elseif _advice.tags}
-
-#{/elseif}-->
  
-#{if _as == 'full'}
-
-    <div class="rating">
-  <h3>Rate advice</h3>
-
-  #{form @Application.updateMark(_advice.id)}
-
-  #{ifErrors}
-  <p class="error">
-    ${errors[0]}
-  </p>
-  #{/ifErrors}
-  <p>
-    <label for="mark"> Give a mark from 0 to 10: </label>
-    <input type="number" name="mark" id="mark" value="${params.mark}"
-  </p>
-  <p>
-    <input type="submit" value="Submit your rating" />
-  </p> 
-  #{/form}
-</div>
-    
-    
+#{if _as == 'full'}    
     <div class="comments">
         <h3>
             ${_advice.comments.size() ?: 'no'} 
