@@ -37,7 +37,7 @@
     <p>
       #{field 'mark'}
       <label>mark this post<label>
-      <input> type="number" max="10"  size="10"
+      <input type="number" max="10"  size="10"
       name="${field.name}" value="${advice?.mark}" />
       #{/field}
     </p>
@@ -51,18 +51,17 @@
     </p>
     
     <p>
-    #{field 'basket'}
-    <label>basket:</label>
-
-    <select  name="${field.name}" selected="${advice?.basket}" required="true">
-        #{list items: listBasket, as: 'baskets'}
-        <option>  ${baskets.name} </option>
-       
-        #{/list}
-         <option value="${advice?.basket}" selected>${advice?.basket}</option>
-    </select>
-    #{/field}
-</p>
+       	#{field 'basket'}
+	    <label>basket:</label>
+	
+	    <select name="${field.name}" selected="${advice?.basket}" required="false">
+	        <option value=""> (None) </option>
+	        #{list items:models.Basket.findAll(), as: 'baskets'}
+	        <option value="${baskets.id}">  ${baskets.name} </option>
+	        #{/list} 
+	    </select>
+	    #{/field}
+	</p>
     
     <p>
         <input type="submit" value="Publish this advice to the blog" />

@@ -39,7 +39,7 @@ body {
 }
 
 #logo span {
-    color: #f00;
+    color: #faebd7;
     font-size: 70%;
 }
 
@@ -315,7 +315,6 @@ form {
 }
 
 form .error {
-    background: #c00;
     color: #fff;
     font-size: 90%;
     padding: 3px 5px;
@@ -531,14 +530,15 @@ tr.odd {
 /** Login **/
 
 #login form {
-    background: #8B98AD !important;
+    background: #8b0000 !important;
     border: 0 !important;
+    color: #8B98AD;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
 }
 
 #login label, #password-field label, #username-field label {
-    color: #161D28 !important;
+    color: black !important;
     font-size: 110% !important;
 }
 
@@ -570,7 +570,7 @@ tr.odd {
 }
 
 #newAdvice a {
-    background: #C88116;
+    background: #8b0000;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     padding: 5px 10px;
@@ -582,7 +582,8 @@ tr.odd {
 }
 
 #newAdvice a span {
-    background: #7D510E;
+    background: #faebd7;
+    color: #8b0000;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     padding: 0 5px 2px 5px;

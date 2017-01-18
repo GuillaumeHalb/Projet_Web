@@ -17,8 +17,7 @@ html, body {
 }
 
 #login form {
-    border: 10px solid #ccc;
-    background: #fff;
+    border: 10px solid #8b0000;
     padding: 10px;
     text-align: left;
 }
@@ -37,7 +36,6 @@ html, body {
     float: left;
     text-align: right;
     margin-right: 5px;
-    color: #333;
     font-size: 15px;
 }
 
