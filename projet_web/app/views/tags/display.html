@@ -1,9 +1,35 @@
 *{ Display a Advice in one of these modes: 'full', 'home' or 'teaser' }*
  
-<div class="Advice ${_as == 'teaser' ? 'teaser' : ''}">
-    <h2 class="Advice-title">
+<div class="Advice${_as == 'teaser' ? '-teaser' : ''}">
+	#{if _as != 'home'}
+		#{if _as != 'teaser'}
+			<ul id="pagination">
+			  	#{if _advice.previous()}
+		  			<li id="previous">
+		    			<a href="@{Application.show(_advice.previous().id)}">
+		      			${_advice.previous().title}
+		    			</a>
+		  			</li>
+				#{/if}
+		  		#{if _advice.next()}
+			  		<li id="next">
+			    		<a href="@{Application.show(_advice.next().id)}">
+			      		${_advice.next().title}
+			    		</a>
+			  		</li>
+		  		#{/if}
+			</ul>
+		#{/if}
+	#{/if}
+	<h2 class="Advice-title">
         <a href="@{Application.show(_advice.id)}">${_advice.title}</a>
     </h2>
+    <span class="Advice-tags">
+      - Tagged
+      #{list items:_advice.tags, as:'tag'}
+      <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+	  #{/list}
+    </span>
     <div class="Advice-metadata">
         <span class="Advice-author">by ${_advice.author.fullname}</span>,
         <span class="Advice-date">${_advice.postedAt.format('dd MMM yy')}</span>
@@ -18,12 +44,6 @@
         #{/if}
     </div>
     #{if _as != 'teaser'}
-    <span class="Advice-tags">
-      - Tagged
-      #{list items:_advice.tags, as:'tag'}
-      <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-	  #{/list}
-    </span>
         <div class="Advice-content">
             <div class="about">Detail: </div>
             ${_advice.content.nl2br()}
@@ -36,6 +56,8 @@
 
 
  #{if _as != 'full'}
+ 	
+ 
     <span class="Advice-comments">
         &nbsp;|&nbsp; ${_advice.comments.size() ?: 'no'}
         comment${_advice.comments.size().pluralize()}
@@ -50,6 +72,26 @@
  
 #{if _as == 'full'}
 
+    <div class="rating">
+  <h3>Rate advice</h3>
+
+  #{form @Application.updateMark(_advice.id)}
+
+  #{ifErrors}
+  <p class="error">
+    ${errors[0]}
+  </p>
+  #{/ifErrors}
+  <p>
+    <label for="mark"> Give a mark from 0 to 10: </label>
+    <input type="number" name="mark" id="mark" value="${params.mark}"
+  </p>
+  <p>
+    <input type="submit" value="Submit your rating" />
+  </p> 
+  #{/form}
+</div>
+    
     
     <div class="comments">
         <h3>

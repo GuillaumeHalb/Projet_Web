@@ -55,6 +55,9 @@ body {
     color: #faebd7;
     text-decoration: none;
     font-weight: bold;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2px;
 }
 
 #title {
@@ -128,17 +131,20 @@ body {
     font-size: 36px;
     color: #FAEBD7;
     text-decoration: none;
+    display: inline-block;
+    margin-right: 100px;
+    margin-top: 5px;
 }
 
 a {
     color: #faebd7;
+    text-decoration:underline;
 }
 
 .Advice .Advice-metadata {
     color: black;
     display: block;
     font-size: 70%;
-    display: inline-block;
 }
 
 .Advice .Advice-author {
@@ -183,14 +189,13 @@ a {
 }
 
 .Advice .Advice-tags {
-	margin-left: 300px;
-    position:relative;
+	position: relative;
     color: black;
 }
 
 span a {
     font-size: 20px;
-    color: black;
+    color: #869ab1;
 }
 
 /** Older Advices **/
@@ -199,15 +204,11 @@ span a {
     margin-bottom: 5px;
 }
 
-.Advice-comments {
-	margin-bottom: 5px;
-	padding-bottom: 5px;
-	bottom: 10px;
+.Advice-teaser {
+	background: #8b0000;
+	border-radius: 10px;
+	padding-left: 10px;
 }
-
-/*.older-Advices .Advice teaser {
-	
-}*/
 
 .older-Advices h3 .from {
     font-weight: normal;
@@ -216,7 +217,6 @@ span a {
 
 .older-Advices .Advice-title {
 	margin: 0;
-	padding: 0;
 }
 
 .older-Advices .Advice {
@@ -225,18 +225,14 @@ span a {
 
 .older-Advices .Advice-title a {
     padding: 0;
-    color: #131921;
     font-size: 20px;
 }
 
 .older-Advices .Advice-metadata {
-    color: #869AB1;
+    color: black;
     padding: 0;
     font-size: 12px;
-}
-
-.older-Advices .Advice-metadata a {
-    color: #869AB1;
+    margin-bottom: 5px;
 }
 
 /** Comments **/
@@ -255,7 +251,7 @@ span a {
 
 h3 {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 h3 span {
@@ -285,7 +281,7 @@ h3 span {
 
 .comment .comment-content {
     position: relative;
-    background: #E4EAFF;
+    background: white;
     color: black;
     font-size: 80%;
     margin-top: 10px;
@@ -303,7 +299,7 @@ h3 span {
     height: 0; 
 	border-top: 10px solid transparent; 
 	border-bottom: 10px solid transparent;
-	border-right: 10px solid #E4EAFF;
+	border-right: 10px solid white;
 	border-left: 0;
 	position: absolute;
 	top: 4px;
@@ -315,9 +311,7 @@ h3 span {
 form {
     padding: 10px;
     background: #8b0000;
-    background: -webkit-gradient(linear, left top, left 60%, from(#253142), to(#364B66));
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 form .error {
@@ -373,14 +367,12 @@ form label {
 }
 
 /** Pagination **/
-
 #pagination {
+	padding: 0px;
+	margin: 0px;
     list-style: none;
-    padding: 0;
-    position: relative;
     font-size: 90%;
-    top: 0px;
-    margin-bottom: 40px;
+    position: relative;
 }
 
 #pagination a {
