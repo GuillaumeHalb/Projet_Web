@@ -46,7 +46,7 @@ public class Application extends Controller {
                                    @Required(message="Author is required") String author, 
                                    @Required(message="A message is required") String content, 
                                    @Required(message="Please type the code") String code, 
-                                   String randomID) 
+                                   String randomID)
     {
         Advice advice = Advice.findById(adviceId);
         validation.equals(

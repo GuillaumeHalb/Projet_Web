@@ -54,7 +54,7 @@
        	#{field 'basket'}
 	    <label>basket:</label>
 	
-	    <select name="${field.name}" selected="${advice?.basket}" required="false">
+	    <select name="${field.name}" selected="${advice?.basket}" >
 	        <option value=""> (None) </option>
 	        #{list items:models.Basket.findAll(), as: 'baskets'}
 	        <option value="${baskets.id}">  ${baskets.name} </option>
