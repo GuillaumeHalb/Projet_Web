@@ -25,7 +25,7 @@
         <a href="@{Application.show(_advice.id)}">${_advice.title}</a>
     </h2>
     <span class="Advice-tags">
-      - Tagged
+      - Tagged 
       #{list items:_advice.tags, as:'tag'}
       <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
 	  #{/list}
@@ -53,19 +53,6 @@
         </div>
     #{/if}
 </div>
-
-
- #{if _as != 'full'}
- 	
- 
-    <span class="Advice-comments">
-        &nbsp;|&nbsp; ${_advice.comments.size() ?: 'no'}
-        comment${_advice.comments.size().pluralize()}
-        #{if _advice.comments}
-            , latest by ${_advice.comments[0].author}
-        #{/if}
-    </span>
-#{/if}
  
 #{if _as == 'full'}    
     <div class="comments">
