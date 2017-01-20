@@ -24,8 +24,13 @@ body {
     vertical-align: baseline;
 }
 
+#head {
+    display: inline-block;
+    position: relative;
+}
+
 #logo {
-    display: block;
+    display: inline-block;
     height: 49px;
     color: #faebd7;
     background: #8B0000;
@@ -44,8 +49,8 @@ body {
 }
 
 #tools {
+    display: inline-block;
     list-style: none;
-    position: absolute;
 	top: 25px;
     right: 20px;
     margin-top: 20px;

@@ -13,30 +13,34 @@
     <body>
         
         <div id="header">
-            <div id="logo">
-                Premier League Advisor
-            </div>
-			<ul id="tools">
-                <li id="search">
-                #{form @Application.search()}
-                #{ifErrors}
-                <p class="error">
-                All fields are required!
-                </p>
-                #{/ifErrors}
+            <div id="head">
+                <div id="logo">
+                    Premier League Advisor
+                </div>
+                <ul id="tools">
+                    <li id="search">
+                        #{form @Application.search()}
+                        #{ifErrors}
+                        <p class="error">
+                            All fields are required!
+                        </p>
+                        #{/ifErrors}
                 
-                <input type="text" name="recherche" id="recherche" value="${params.recherche}" />
-                <input type="submit" value="Search"/>
-                #{/form}
-                </li>
-			    <li id="log-in">
-			        <a href="@{Admin.index()}">Log in to write something</a>
-			    </li>
-			</ul>
-            <div id="title">
-                <span class="about"></span>
-                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                <h2>${blogBaseline}</h2>
+                        <input type="text" name="recherche" id="recherche" value="${params.recherche}" />
+                        <input type="submit" value="Search"/>
+                        #{/form}
+                    </li>
+                    <li id="log-in">
+                        <a href="@{Admin.index()}">Log in to write something</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="title1">
+                <div id="title">
+                    <span class="about"></span>
+                    <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
+                    <h2>${blogBaseline}</h2>
+                </div>
             </div>
         </div>
         
