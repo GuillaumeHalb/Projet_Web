@@ -51,6 +51,11 @@ body {
     margin-top: 20px;
 }
 
+#tools #search {
+    margin-top: -40px;
+    margin-bottom: 5px;
+}
+
 #tools a {
     color: #faebd7;
     text-decoration: none;

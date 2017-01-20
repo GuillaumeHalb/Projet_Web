@@ -267,7 +267,7 @@ form .removeAttachment {
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: #54BD06;
+	background: #F08080;
 	padding: 3px 10px;
 	font-size: 90%;
 	-moz-border-radius: 8px;
@@ -328,7 +328,7 @@ form .removeAttachment {
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: #c00;
+	background: #F08080;
 	padding: 2px 10px;
 	font-size: 90%;
 	-moz-border-radius: 8px;
