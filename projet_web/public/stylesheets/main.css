@@ -53,11 +53,19 @@ body {
 #tools {
     display: inline-block;
     list-style: none;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 30px;
+    margin-bottom: 5px;
 }
 
 #tools #search {
-    margin-top: -40px;
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#log-in {
+    padding-left: 9px;
 }
 
 #tools a {
@@ -612,4 +620,16 @@ tr.odd {
 
 .hasError {
     background: pink;
+}
+
+.results {
+    background: #00008B;
+    color:white;
+    padding: 5px;
+}
+
+.recherche {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: yellow;
 }

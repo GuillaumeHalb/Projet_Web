@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Results' /}
+
+#{if myList.size()}
+
+    <div class="found-Advices">
+        <h3 class="results">Results <span class="from">from this blog for the research:</span> <span class="recherche">'${recherche}'</span></h3>
+    
+        #{list items:myList, as:'advice'}
+            #{display advice:advice, as:'teaser' /}
+        #{/list}
+        
+    </div>
+
+#{/if}
+#{else}
+    <div class="results">
+        No advice found for the research: <span class="recherche">'${recherche}'</span>.
+    </div>
+#{/else}
