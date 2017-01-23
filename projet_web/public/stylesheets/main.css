@@ -2,6 +2,7 @@
 
 html, body {
     background: #FAEBD7 !important;
+	/*background:radial-gradient(white,#FFF5EE);*/
     font-family: Helvetica, Arial, Sans !important;
     color: black;
 }

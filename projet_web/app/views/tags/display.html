@@ -50,7 +50,12 @@
         </div>
         <div class="mark">
           General review : 
+		  #{if _advice.totalMark != 0}
 		  <a href=@{Application.show(_advice.id,true)}>${_advice.totalMark.nl2br()}/10 </a>
+		  #{/if}
+		  #{else}
+		  <a href=@{Application.show(_advice.id,true)}>No review for this advice </a>
+		  #{/else}
         </div>
     #{/if}
 </div>
