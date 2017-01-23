@@ -1,0 +1,13 @@
+#{extends 'admin.html' /}
+ 
+<!--<h3>Welcome ${user}, <span>you have written ${advices.size() ?: 'no'} ${advices.pluralize('advice', 'advices')} so far</span></h3>
+ -->
+#{list items:advices, as:'advice'}
+    <p class="Advice ${advice_parity}">
+        <a href="@{Admin.form(advice.id)}">${advice.title}</a>
+    </p>
+#{/list}
+ 
+<p id="newBasket" >
+	<a href="@{form()}"><span>+</span> Create a new basket</a>
+</p>

@@ -24,10 +24,24 @@ public class Admin extends Controller {
         render(advices);
     }
     
+    public static void baskets(){
+    	String user = Security.connected();
+        List<Basket> baskets = Basket.find("user.email", user).fetch();
+        render(baskets);
+    }
+    
     public static void form(Long id) {
         if(id != null) {
             Advice advice = Advice.findById(id);
             render(advice);
+        }
+        render();
+    }
+    
+    public static void newBasket(Long id) {
+        if(id != null) {
+            Basket basket = Basket.findById(id);
+            render(basket);
         }
         render();
     }
@@ -62,5 +76,39 @@ public class Admin extends Controller {
         // Save
         advice.save();
         index();
+    }
+    
+
+    public static void saveBasket(Long id, String name) {
+        Basket basket;
+        if(id == null) {
+            // Create Basket
+            User author = User.find("byEmail", Security.connected()).first();
+            basket = new Basket(name, author);
+        } else {
+            // Retrieve Basket
+            basket = Basket.findById(id);
+            // Edit
+            basket.name = name;
+        }
+        // Set advices list
+        /**for(String tag : tags.split("\\s+")) {
+            if(tag.trim().length() > 0) {
+                advice.tags.add(Tag.findOrCreateByName(tag));
+            }
+        }**/
+        // Validate
+        validation.valid(basket);
+        if(validation.hasErrors()) {
+            render("@form", basket);
+        }
+        // Save
+        basket.save();
+        baskets();
+    }
+
+    public static void signUp() {
+        render();
+
     }
 }

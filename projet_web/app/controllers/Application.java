@@ -13,14 +13,28 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-
         Advice frontAdvice = Advice.find("order by postedAt desc").first();
         List<Advice> olderAdvices = Advice.find(
                                                 "order by postedAt desc"
                                                 ).from(1).fetch(10);
 		List<Tag> Tags = Tag.find("order by name desc").fetch();
-        render(frontAdvice, olderAdvices, Tags);
-    }	
+        if (Security.isConnected()) {
+            User user = User.find("byEmail", Security.connected()).first();
+            System.out.println("connected user: " + user);
+            connected(user);
+        } else {
+            render(frontAdvice, olderAdvices, Tags);
+        }
+    }
+    
+    public static void connected(User user) {
+        Advice frontAdvice = Advice.find("order by postedAt desc").first();
+        List<Advice> olderAdvices = Advice.find(
+                                                "order by postedAt desc"
+                                                ).from(1).fetch(10);
+        List<Tag> Tags = Tag.find("order by name desc").fetch();
+        render(user, frontAdvice, olderAdvices, Tags);
+    }
 	
     @Before
     static void addDefaults() {
@@ -80,19 +94,32 @@ public class Application extends Controller {
         render(tag, advices);
     }
 
+    public static void signUp() {
+        render();
+    }
     
-    public static void signUp(
-                              @Required(message = "email required") String email,
+    public static void newMember(@Required(message = "email required") String email,
+                              @Required(message = "full name required") String fullName,
                               @Required(message = "password required") String password,
-                              @Required(message = "full name required") String fullName) 
+                              @Required(message = "password required") String confirm)
     {
+        if (!confirm.equals(password)) {
+            // TODO: generate error
+            System.out.println("Passwords do not match");
+        }
         User usr = new User(email, password, fullName).save();
         flash.success("Thanks for registering");
-        render(email, fullName);
+        
+        List<User> users = User.find("select distinct u from User u").fetch();
+        for (User u : users) {
+            System.out.println("user: " + u);
+        }
+        connected(usr);
     }
     
     public static void search(@Required(message = "String is required")String recherche) {
         if (recherche.equals("")) {
+            // TODO: generate error
             /*index();
             return;*/
         }

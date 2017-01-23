@@ -30,6 +30,9 @@
         <li class="${request.controller == 'Admin' ? 'selected' : ''}">
             <a href="@{Admin.index()}">My advices</a>
         </li>
+        <li class="${request.controller == 'Baskets' ? 'selected' : ''}">
+               <a href="@{Admin.baskets()}">My baskets</a>
+        </li>
         #{secure.check 'admin'}
             <li class="${request.controller == 'Advices' ? 'selected' : ''}">
                 <a href="@{Advices.list()}">Advices</a>
@@ -43,9 +46,7 @@
             <li class="${request.controller == 'Users' ? 'selected' : ''}">
                 <a href="@{Users.list()}">Users</a>
             </li>
-            <li class="${request.controller == 'Baskets' ? 'selected' : ''}">
-                <a href="@{Baskets.list()}">Baskets</a>
-            </li>
+
         #{/secure.check}
     </ul>
     
