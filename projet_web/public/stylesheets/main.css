@@ -65,7 +65,12 @@ body {
 }
 
 #log-in {
-    padding-left: 68em;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+#sign-up {
+    padding-left: 8px;
 }
 
 #tools a {
@@ -653,3 +658,8 @@ tr.odd {
     font-weight: bold;
     color: yellow;
 }
+
+#parameters {
+    list-style: none;
+}
+

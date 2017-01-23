@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'sign-up' /}
+
+<ul id="parameters">
+    #{form @Application.newMember()}
+    <li id="email">
+        <label for="email">Email: </label>
+        <input type="text" name="email" id="email" value="${params.email}" />
+        
+    </li>
+    <li id="fullName">
+        <label for="fullName">Full name: </label>
+        <input type="text" name="fullName" id="fullName" value="${params.fullName}" />
+    </li>
+    <li id="password">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" value="${params.password}" />
+    </li>
+    <li id="confirm">
+        <label for="confirm">Confirm your password: </label>
+        <input type="password" name="confirm" id="confirm" value="${params.confirm}" />
+    </li>
+    <li id="valid">
+        <input type="submit" value="sign-up!"/>
+    </li>
+
+    </li>
+    #{/form}
+</ul>
