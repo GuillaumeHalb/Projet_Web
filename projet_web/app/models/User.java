@@ -19,6 +19,9 @@ public class User extends Model {
     public String fullname;
     public boolean isAdmin;
     
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Basket> baskets;
+    
     public User(String email, String password, String fullname) {
         this.email = email;
         this.password = password;

@@ -32,12 +32,12 @@ public class Admin extends Controller {
         render();
     }
      
-    public static void save(Long id, String title, String content, String tags, int mark) {
+    public static void save(Long id, String title, String content, String tags, int mark, double value) {
         Advice advice;
         if(id == null) {
             // Create advice
             User author = User.find("byEmail", Security.connected()).first();
-            advice = new Advice(author, title, content, mark);
+            advice = new Advice(author, title, content, mark, value);
         } else {
             // Retrieve advice
             advice = Advice.findById(id);
@@ -46,6 +46,7 @@ public class Admin extends Controller {
             advice.content = content;
             advice.totalMark = mark;
             advice.tags.clear();
+            advice.expectedValue = value;
         }
         // Set tags list
         for(String tag : tags.split("\\s+")) {

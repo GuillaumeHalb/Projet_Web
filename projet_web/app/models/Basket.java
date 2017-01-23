@@ -17,9 +17,13 @@ public class Basket extends Model {
     @OneToMany(mappedBy = "basket", cascade = CascadeType.ALL)
     public List<Advice> advices;
     
-    public Basket(String name) {
+    @ManyToOne
+    public User user;
+    
+    public Basket(String name, User user) {
         this.name = name;
         advices = new ArrayList<Advice>();
+        this.user = user;
     }
     
     public Basket addAdvice(Advice adv) {
@@ -33,13 +37,5 @@ public class Basket extends Model {
         return name;
     }
 
-
-    public static Basket findOrCreateByName(String name) {
-    	Basket basket = Basket.find("byName", name).first();
-        if (basket == null) {
-            basket = new Basket(name).save();
-        }
-        return basket;
-    }
     
 }
