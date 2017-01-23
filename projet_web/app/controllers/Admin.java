@@ -44,7 +44,7 @@ public class Admin extends Controller {
             // Edit
             advice.title = title;
             advice.content = content;
-            advice.mark = mark;
+            advice.totalMark = mark;
             advice.tags.clear();
         }
         // Set tags list

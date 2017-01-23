@@ -26,11 +26,11 @@ public class Application extends Controller {
         renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
-    
-    public static void show(Long id) {
+	
+	public static void show(Long id ,boolean reviewers) {
         Advice advice = Advice.findById(id);
         String randomID = Codec.UUID();
-        render(advice, randomID);
+        render(advice, randomID,reviewers);
     }
 
 
@@ -58,19 +58,19 @@ public class Application extends Controller {
         advice.addComment(author, content);
         flash.success("Thanks for posting %s", author);
         Cache.delete(randomID);
-        show(adviceId);
+        show(adviceId,false);
     }
     
-    public static void updateMark(Long adviceId ,@Required (message="A mark is required")  int mark) {
+    public static void postReview(Long adviceId ,@Required (message="A mark is required")  int mark,
+												 @Required(message="Author is required") String author) {
         Advice advice = Advice.findById(adviceId);
         validation.isTrue("invalid",mark>0 && mark <= 10).message("Invalid value for mark. Insert a number between 1 and 10");
         if(validation.hasErrors()) {
             render("Application/show.html",advice,mark);
         }
-        advice.addMark(mark);
+        advice.addReview(mark,author);
         flash.success("Rating successfully added");
-        show(adviceId);
-        
+        show(adviceId,true);
     }
     
 
