@@ -96,6 +96,10 @@ body {
     -moz-border-radius: 16px;
 }
 
+.list-tags {
+	color = #FAEBD7;
+}
+
 /** A little hacky to create arrows without images **/
 .about {
     text-indent: -999em;

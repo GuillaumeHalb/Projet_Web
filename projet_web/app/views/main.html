@@ -35,6 +35,12 @@
                     <span class="about"></span>
                     <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
                     <h2>${blogBaseline}</h2>
+						<span class="list-tags">
+							#{list items:Tags, as:'tag'}
+							<a href="@{Application.listTagged(tag.name)}">
+								${tag}</a>${tag_isLast ? '' : ', '}
+							#{/list}
+						</span>
                 </div>
             </div>
         </div>
