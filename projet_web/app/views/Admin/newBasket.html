@@ -1,0 +1,41 @@
+#{extends 'admin.html' /}
+ 
+#{ifnot basket?.id}
+    <h3>Create, <span>a new basket</span></h3>
+#{/ifnot}
+#{else}
+    <h3>Edit, <span>this basket</span></h3>
+#{/else}
+ 
+#{form @saveBasket(basket?.id)}
+ 
+    #{ifErrors}
+        <p class="error">
+            Please correct these errors.
+        </p>
+    #{/ifErrors}
+     
+    <p>
+        #{field 'name'}
+        <label>Basket name:</label>
+        <input type="text" name="${field.name}" 
+            value="${basket?.name}" />
+        <span class="error">#{error 'advice.title' /}</span>
+        #{/field}
+    </p>
+    
+    <p>
+    #{field 'advices'}
+    <label>Advices:</label>
+
+    <input type="checkbox" value="checkbox1"  class="displayAdvices"> test </input>
+    #{/field}
+</p>
+    
+    
+    <p>
+        <input type="submit" value="Create this new basket" />
+    </p>
+    
+#{/form}
+

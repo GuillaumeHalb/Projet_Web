@@ -20,7 +20,6 @@ GET     /admin/?                                Admin.index
 GET     /admin/new                          Admin.form
 POST    /admin/new                          Admin.save
 GET     /admin/myPosts/{id}                 Admin.form
-GET     /admin/new                          Admin.form
 POST    /admin/myPosts/{id}                 Admin.save
 POST    /admin/new                          Admin.save
 *       /admin                                  module:crud
@@ -30,6 +29,8 @@ POST    /admin/new                          Admin.save
 POST    /advices/{adviceId}/comments                Application.postComment
 GET     /advices/{<[0-9]+>id}                             Application.show
 GET     /advices/{tag}                    Application.listTagged
+GET 	/myBaskets/                        Admin.baskets
+GET     /myBaskets/newBasket                          Admin.newBasket
 *       /{controller}/{action}                  {controller}.{action}
 
 # Import CRUD routes
