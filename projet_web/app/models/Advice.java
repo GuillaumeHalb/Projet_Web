@@ -8,6 +8,14 @@ import play.data.validation.*;
  
 @Entity
 public class Advice extends Model {
+	
+	public static enum termType{
+		MIDTERM,
+		SHORTTERM,
+		LONGTERM;
+		
+	}
+	
     @Required
     public String title;
     
@@ -26,6 +34,9 @@ public class Advice extends Model {
     @Required
     public int totalMark;
     
+    @Required
+    public double expectedValue;
+    
     @OneToMany(mappedBy="advice", cascade=CascadeType.ALL)
     public List<Comment> comments;
     
@@ -38,7 +49,7 @@ public class Advice extends Model {
     @OneToMany(mappedBy="advice",cascade=CascadeType.ALL)
 	public List<Review> reviews;
 
-    public Advice(User author, String title, String content, int mark) {
+    public Advice(User author, String title, String content, int mark, double value) {
         this.comments = new ArrayList<Comment>();
         this.tags = new TreeSet<Tag>();
         this.author = author;
@@ -46,6 +57,7 @@ public class Advice extends Model {
         this.content = content;
         this.postedAt = new Date();
         this.totalMark = mark;
+        this.expectedValue = value;
     }
 
     
