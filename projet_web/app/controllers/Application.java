@@ -18,16 +18,23 @@ public class Application extends Controller {
                                                 "order by postedAt desc"
                                                 ).from(1).fetch(10);
 		List<Tag> Tags = Tag.find("order by name desc").fetch();
-/*        if (Security.isConnected()) {
-            connected();
-        } else {*/
+        if (Security.isConnected()) {
+            User user = User.find("byEmail", Security.connected()).first();
+            System.out.println("connected user: " + user);
+            connected(user);
+        } else {
             render(frontAdvice, olderAdvices, Tags);
-        //}
+        }
     }
     
-/*    public static void connected() {
-        render();
-    } */
+    public static void connected(User user) {
+        Advice frontAdvice = Advice.find("order by postedAt desc").first();
+        List<Advice> olderAdvices = Advice.find(
+                                                "order by postedAt desc"
+                                                ).from(1).fetch(10);
+        List<Tag> Tags = Tag.find("order by name desc").fetch();
+        render(user, frontAdvice, olderAdvices, Tags);
+    }
 	
     @Before
     static void addDefaults() {
@@ -107,7 +114,7 @@ public class Application extends Controller {
         for (User u : users) {
             System.out.println("user: " + u);
         }
-        index();
+        connected(usr);
     }
     
     public static void search(@Required(message = "String is required")String recherche) {

@@ -690,3 +690,13 @@ tr.odd {
     list-style: none;
 }
 
+#valid {
+    margin-top: 5px;
+}
+
+#user {
+    color : #FF7F50;
+    display: inline-block;
+    padding-left: 8px;
+}
+
