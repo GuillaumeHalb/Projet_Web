@@ -13,5 +13,4 @@ public class Bootstrap extends Job {
             Fixtures.loadModels("initial-data.yml");
         }
     }
- 
 }

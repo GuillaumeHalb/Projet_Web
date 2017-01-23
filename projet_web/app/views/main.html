@@ -28,6 +28,9 @@
                     <li id="log-in">
                         <a href="@{Admin.index()}">Log in to write something</a>
                     </li>
+                    <li id="sign-up">
+                        <a href="@{Admin.signUp()}">New member ? Sign up</a>
+                    </li>
                 </ul>
             </div>
             <div id="title1">
@@ -35,6 +38,12 @@
                     <span class="about"></span>
                     <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
                     <h2>${blogBaseline}</h2>
+						<span class="list-tags">
+							#{list items:Tags, as:'tag'}
+							<a href="@{Application.listTagged(tag.name)}">
+								${tag}</a>${tag_isLast ? '' : ', '}
+							#{/list}
+						</span>
                 </div>
             </div>
         </div>

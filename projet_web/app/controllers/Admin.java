@@ -78,6 +78,7 @@ public class Admin extends Controller {
         index();
     }
     
+
     public static void saveBasket(Long id, String name) {
         Basket basket;
         if(id == null) {
@@ -104,5 +105,10 @@ public class Admin extends Controller {
         // Save
         basket.save();
         baskets();
+    }
+
+    public static void signUp() {
+        render();
+
     }
 }
