@@ -7,11 +7,20 @@
 
 #{display advice:advice, as:'full' /}
 
+#{if reviewers}
+	#{list items:advice.reviews, as:'review'}
+		<div class="Advice-review">
+		<p>
+			${review.author} marked this advice ${review.mark}/10
+		</p>
+		</div>
+	#{/list}	
+#{/if}
 
 <div class="rating">
   <h3>Rate advice</h3>
 
-  #{form @Application.updateMark(advice.id)}
+  #{form @Application.postReview(advice.id)}
 
   #{ifErrors}
   #{if errors[0].getKey().matches("invalid")}
@@ -20,8 +29,14 @@
   </p>
   #{/if}
   #{/ifErrors}
+  
   <p>
-    <label for="mark"> Give a mark from 0 to 10: </label>
+	<label for="author">Your name: </label>
+	<input type="text" name="author" id="author" value="${params.author}" />
+  </p>
+  
+  <p>
+    <label for="mark"> Give a mark from 1 to 10: </label>
     <input type="number" name="mark" min="1" max="10" id="mark" value="${params.mark}"
            </p>
   <p>
@@ -29,7 +44,6 @@
   </p> 
   #{/form}
 </div>
-
 <h3>Post a comment</h3>
 
 #{form @Application.postComment(advice.id)}

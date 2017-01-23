@@ -8,6 +8,14 @@ import play.data.validation.*;
  
 @Entity
 public class Advice extends Model {
+	
+	public static enum termType{
+		MIDTERM,
+		SHORTTERM,
+		LONGTERM;
+		
+	}
+	
     @Required
     public String title;
     
@@ -24,7 +32,10 @@ public class Advice extends Model {
     public User author;
 
     @Required
-    public int mark;
+    public int totalMark;
+    
+    @Required
+    public double expectedValue;
     
     @OneToMany(mappedBy="advice", cascade=CascadeType.ALL)
     public List<Comment> comments;
@@ -35,16 +46,18 @@ public class Advice extends Model {
     @ManyToOne
     public Basket basket;
      
-    
+    @OneToMany(mappedBy="advice",cascade=CascadeType.ALL)
+	public List<Review> reviews;
 
-    public Advice(User author, String title, String content, int mark) {
+    public Advice(User author, String title, String content, int mark, double value) {
         this.comments = new ArrayList<Comment>();
         this.tags = new TreeSet<Tag>();
         this.author = author;
         this.title = title;
         this.content = content;
         this.postedAt = new Date();
-        this.mark = mark;
+        this.totalMark = mark;
+        this.expectedValue = value;
     }
 
     
@@ -59,13 +72,15 @@ public class Advice extends Model {
     
     //TODO : ajouter comme attribut la liste des éléments réferant ( actions etc )
     //TODO : voir pour le type d'investissement ( peut etre avec un enum); la plus ou moins value; indice de confiance
-    public Advice addMark(int newMark) {
-        int calculatedMark = this.mark + newMark;
-        if (calculatedMark != newMark) {
-            this.mark = calculatedMark/2;
+    public Advice addReview(int mark, String author) {
+		Review newReview = new Review(this, author, mark);
+		this.reviews.add(newReview);
+        int calculatedMark = this.totalMark + mark;
+        if (calculatedMark != mark) {
+            this.totalMark = calculatedMark/2;
         }
         else {
-            mark = newMark;
+            totalMark = mark;
         }
         this.save();
         return this;

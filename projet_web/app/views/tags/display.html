@@ -6,14 +6,14 @@
 			<ul id="pagination">
 			  	#{if _advice.previous()}
 		  			<li id="previous">
-		    			<a href="@{Application.show(_advice.previous().id)}">
+		    			<a href="@{Application.show(_advice.previous().id,false)}">
 		      			${_advice.previous().title}
 		    			</a>
 		  			</li>
 				#{/if}
 		  		#{if _advice.next()}
 			  		<li id="next">
-			    		<a href="@{Application.show(_advice.next().id)}">
+			    		<a href="@{Application.show(_advice.next().id,false)}">
 			      		${_advice.next().title}
 			    		</a>
 			  		</li>
@@ -22,7 +22,7 @@
 		#{/if}
 	#{/if}
 	<h2 class="Advice-title">
-        <a href="@{Application.show(_advice.id)}">${_advice.title}</a>
+        <a href="@{Application.show(_advice.id,false)}">${_advice.title}</a>
     </h2>
     <span class="Advice-tags">
       - Tagged 
@@ -49,8 +49,8 @@
             ${_advice.content.nl2br()}
         </div>
         <div class="mark">
-            
-          General review : ${_advice.mark.nl2br()}/10
+          General review : 
+		  <a href=@{Application.show(_advice.id,true)}>${_advice.totalMark.nl2br()}/10 </a>
         </div>
     #{/if}
 </div>

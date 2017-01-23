@@ -41,6 +41,14 @@
       name="${field.name}" value="${advice?.mark}" />
       #{/field}
     </p>
+    
+    <p>
+      #{field 'expectedValue'}
+      <label>Enter the expected value<label>
+          <input type="number"
+      name="${field.name}" value="${advice?.expectedValue}" />
+      #{/field}
+    </p>
  
     <p>
         #{field 'tags'}
@@ -50,18 +58,6 @@
         #{/field}
     </p>
     
-    <p>
-       	#{field 'basket'}
-	    <label>basket:</label>
-	
-	    <select name="${field.name}" selected="${advice?.basket}" >
-	        <option value=""> (None) </option>
-	        #{list items:models.Basket.findAll(), as: 'baskets'}
-	        <option value="${baskets.id}">  ${baskets.name} </option>
-	        #{/list} 
-	    </select>
-	    #{/field}
-	</p>
     
     <p>
         <input type="submit" value="Publish this advice to the blog" />

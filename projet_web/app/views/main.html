@@ -20,12 +20,6 @@
                 <ul id="tools">
                     <li id="search">
                         #{form @Application.search()}
-                        
-<!--                        #{ifErrors}
-                        #{if errors[0].getKey().matches("invalid")}
-                            <p class="error">${errors[0]}</p>
-                        #{/if}
-                        #{/ifErrors} -->
 
                         <input type="text" name="recherche" id="recherche" value="${params.recherche}" />
                         <input type="submit" value="Search"/>
@@ -44,6 +38,12 @@
                     <span class="about"></span>
                     <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
                     <h2>${blogBaseline}</h2>
+						<span class="list-tags">
+							#{list items:Tags, as:'tag'}
+							<a href="@{Application.listTagged(tag.name)}">
+								${tag}</a>${tag_isLast ? '' : ', '}
+							#{/list}
+						</span>
                 </div>
             </div>
         </div>

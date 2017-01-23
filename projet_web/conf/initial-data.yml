@@ -103,6 +103,7 @@ Advice(firstBobAdvice):
     title:          Facebook about to grow 8%
     postedAt:       2009-06-14
     author:         bob
+    expectedValue:  8
     tags:
                     - facebook
     content:        >
@@ -112,6 +113,7 @@ Advice(secondBobAdvice):
     title:          Alphabet 2% down
     postedAt:       2009-03-25
     author:         bob
+    expectedValue:  2
     tags:
                     - alphabet
     content:        >
@@ -121,6 +123,7 @@ Advice(jeffAdvice):
     title:          Coca-Cola's new product
     postedAt:       2009-06-06
     author:         jeff
+    expectedValue:  12
     tags:
                     - cocacola
     content:        >

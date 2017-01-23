@@ -59,13 +59,13 @@ body {
     margin-bottom: 5px;
 }
 
-#tools #search {
+#search {
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 0px
 }
 
 #log-in {
-    padding-left: 9px;
+    padding-left: 68em;
 }
 
 #tools a {
@@ -94,6 +94,10 @@ body {
 	border-radius: 10px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
+}
+
+.list-tags {
+	color = #FAEBD7;
 }
 
 /** A little hacky to create arrows without images **/
@@ -335,6 +339,12 @@ form {
     border-radius: 10px;
 }
 
+form p img {
+    border-style : double;
+    border-color : #faebd7;
+    border-width : 2 pt;
+}
+
 form .error {
     color: #fff;
     font-size: 90%;
@@ -370,6 +380,16 @@ form label {
     display: block;
     padding: 10px;
     margin: 0px 50px 10px 5px;
+}
+
+.Advice-review {
+    position : relative;
+    background : #8b0000;
+    color : #faebd7;
+    border-radius: 5px;
+    font-weight: bold;
+    padding-left: 12px;
+    
 }
 
 #captcha{
