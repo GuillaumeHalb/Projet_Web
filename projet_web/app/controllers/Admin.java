@@ -62,4 +62,8 @@ public class Admin extends Controller {
         advice.save();
         index();
     }
+    
+    public static void signUp() {
+        render();
+    }
 }
