@@ -91,6 +91,10 @@ public class Application extends Controller {
     }
     
     public static void search(@Required(message = "String is required")String recherche) {
+        if (recherche.equals("")) {
+            /*index();
+            return;*/
+        }
         List<Advice> myList;
         String qr = "select distinct a from Advice a where upper(a.title) like upper('%" + recherche + "%')";
         myList = Advice.find(qr).fetch();

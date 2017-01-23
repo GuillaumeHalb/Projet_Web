@@ -15,6 +15,7 @@ body {
 /** Blog header **/
 
 #header {
+    background: #8B0000;
     position: relative;
     border: 0 none;
     box-sizing: border-box;
@@ -24,8 +25,14 @@ body {
     vertical-align: baseline;
 }
 
+#head {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
 #logo {
-    display: block;
+    display: inline-block;
     height: 49px;
     color: #faebd7;
     background: #8B0000;
@@ -44,11 +51,21 @@ body {
 }
 
 #tools {
+    display: inline-block;
     list-style: none;
-    position: absolute;
-	top: 25px;
-    right: 20px;
-    margin-top: 20px;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+#tools #search {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#log-in {
+    padding-left: 9px;
 }
 
 #tools a {
@@ -58,6 +75,11 @@ body {
     border-width: 1px;
     border-style: solid;
     padding: 2px;
+}
+
+#title1 {
+    background: #faebd7;
+    padding-top: 20px;
 }
 
 #title {
@@ -71,7 +93,6 @@ body {
     position: relative;
 	border-radius: 10px;
     -webkit-border-radius: 16px;
-    -webkit-box-shadow: 0 2px 0 #93A045;
     -moz-border-radius: 16px;
 }
 
@@ -599,4 +620,16 @@ tr.odd {
 
 .hasError {
     background: pink;
+}
+
+.results {
+    background: #00008B;
+    color:white;
+    padding: 5px;
+}
+
+.recherche {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: yellow;
 }
