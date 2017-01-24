@@ -1,3 +1,4 @@
+#{set title:'Connected' /}
 <!DOCTYPE html >
 <html>
     <head>
@@ -28,6 +29,9 @@
                     <li id="user"> Connected as: ${user} </li>
                     <li>
                         <a href="@{Secure.logout()}">Log out</a>
+                    </li>
+                    <li>
+                        <a href="@{Admin.index()}">Admin Area</a>
                     </li>
                 </ul>
             </div>

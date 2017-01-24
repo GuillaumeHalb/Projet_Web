@@ -20,7 +20,6 @@ public class Application extends Controller {
 		List<Tag> Tags = Tag.find("order by name desc").fetch();
         if (Security.isConnected()) {
             User user = User.find("byEmail", Security.connected()).first();
-            System.out.println("connected user: " + user);
             connected(user);
         } else {
             render(frontAdvice, olderAdvices, Tags);
