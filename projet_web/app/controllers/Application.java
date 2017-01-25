@@ -132,8 +132,10 @@ public class Application extends Controller {
               return;*/
         }
         List<Advice> myList;
+        List<Advice> listFromTag = Advice.findTaggedWith(recherche);
         String qr = "select distinct a from Advice a where upper(a.title) like upper('%" + recherche + "%')";
         myList = Advice.find(qr).fetch();
+        myList.addAll(listFromTag);
         render(recherche, myList);
     }
 }

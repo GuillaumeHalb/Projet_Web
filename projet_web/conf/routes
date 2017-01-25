@@ -26,11 +26,13 @@ POST    /admin/new                          Admin.save
 
 
 # Catch all
+GET     /Connected/                         Application.connected
 POST    /advices/{adviceId}/comments                Application.postComment
 GET     /advices/{<[0-9]+>id}                             Application.show
 GET     /advices/{tag}                    Application.listTagged
 GET 	/myBaskets/                        Admin.baskets
 GET     /myBaskets/newBasket                          Admin.newBasket
+
 *       /{controller}/{action}                  {controller}.{action}
 
 # Import CRUD routes
