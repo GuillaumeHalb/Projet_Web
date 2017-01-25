@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
- 
+#{set user:user /}
+
 #{if frontAdvice}
     
     #{display advice:frontAdvice, as:'home' /}

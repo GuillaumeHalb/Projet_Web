@@ -1,62 +1,73 @@
 <!DOCTYPE html >
 <html>
-    <head>
-        <title>#{get 'title' /}</title>		
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" type="text/css" media="screen" 
-            href="@{'/public/stylesheets/main.css'}" />
-        <link rel="shortcut icon" type="image/png" 
-            href="@{'/public/images/favicon.png'}" />
-         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}"></script>
-    	<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}"></script>
-    </head>
-    <body>
-        
-        <div id="header">
-            <div id="head">
-                <div id="logo">
-                    Premier League Advisor
-                </div>
-                <ul id="tools">
-                    <li id="search">
-                        #{form @Application.search()}
+  <head>
+    <title>#{get 'title' /}</title>		
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" media="screen" 
+          href="@{'/public/stylesheets/main.css'}" />
+    <link rel="shortcut icon" type="image/png" 
+          href="@{'/public/images/favicon.png'}" />
+    <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}"></script>
+    <script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}"></script>
+  </head>
+  <body>
+    
+    <div id="header">
+      <div id="head">
+        <div id="logo">
+          Premier League Advisor
+        </div>
+        <ul id="tools">
+          <li id="search">
+            #{form @Application.search()}
 
-                        <input type="text" name="recherche" id="recherche" value="${params.recherche}" />
-                        <input type="submit" value="Search"/>
-                        #{/form}
-                    </li>
-                    <li id="log-in">
-                        <a href="@{Admin.index()}">Log in to write something</a>
-                    </li>
-                    <li id="sign-up">
-                        <a href="@{Application.signUp()}">New member ? Sign up</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="title1">
-                <div id="title">
-                    <span class="about"></span>
-                    <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                    <h2>${blogBaseline}</h2>
-						<span class="list-tags">
-							#{list items:Tags, as:'tag'}
-							<a href="@{Application.listTagged(tag.name)}">
-								${tag}</a>${tag_isLast ? '' : ', '}
-							#{/list}
-						</span>
-                </div>
-            </div>
+            <input type="text" name="recherche" id="recherche" value="${params.recherche}" />
+            <input type="submit" value="Search"/>
+            #{/form}
+          </li>
+          #{if get('user')}
+          <li id="user"> Connected as: #{get 'user' /} </li>
+          <li>
+            <a href="@{Secure.logout()}">Log out</a>
+          </li>
+          <li>
+            <a href="@{Admin.index()}">Admin Area</a>
+          </li>
+          #{/if}
+          #{else}
+          <li id="log-in">
+            <a href="@{Admin.index()}">Log in to write something</a>
+          </li>
+          <li id="sign-up">
+            <a href="@{Application.signUp()}">New member ? Sign up</a>
+          </li>
+          #{/else}
+        </ul>
+      </div>
+      <div id="title1">
+        <div id="title">
+          <span class="about"></span>
+          <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
+          <h2>${blogBaseline}</h2>
+		  <span class="list-tags">
+			#{list items:Tags, as:'tag'}
+			<a href="@{Application.listTagged(tag.name)}">
+			  ${tag}</a>${tag_isLast ? '' : ', '}
+			#{/list}
+		  </span>
         </div>
-        
-        <div id="main">
-            #{doLayout /} 
-        </div>
-        
-        <!--<p id="footer">
-            Yabe is a (not that) powerful blog engine built with the 
-            <a href="http://www.playframework.org">Play framework</a>
-            as a tutorial application.
-        </p>-->
-        
-    </body>
+      </div>
+    </div>
+    
+    <div id="main">
+      #{doLayout /} 
+    </div>
+    
+    <!--<p id="footer">
+        Yabe is a (not that) powerful blog engine built with the 
+        <a href="http://www.playframework.org">Play framework</a>
+        as a tutorial application.
+    </p>-->
+    
+  </body>
 </html>

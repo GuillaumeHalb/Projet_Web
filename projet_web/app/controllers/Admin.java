@@ -14,7 +14,10 @@ public class Admin extends Controller {
     static void setConnectedUser() {
         if(Security.isConnected()) {
             User user = User.find("byEmail", Security.connected()).first();
-            renderArgs.put("user", user.fullname);
+            if (!user.isAdmin || (user.isAdmin && user.authorized))
+                {
+                    renderArgs.put("user", user.fullname);
+                }
         }
     }
     
@@ -111,4 +114,12 @@ public class Admin extends Controller {
         render();
 
     }
+
+    public static void authorize(Long id) {
+        User user = User.findById(id);
+        user.authorized = !user.authorized;
+        user.save();
+    }
+
+
 }

@@ -20,7 +20,7 @@ public class Application extends Controller {
 		List<Tag> Tags = Tag.find("order by name desc").fetch();
         if (Security.isConnected()) {
             User user = User.find("byEmail", Security.connected()).first();
-            connected(user);
+            render(frontAdvice, olderAdvices, Tags,user);
         } else {
             render(frontAdvice, olderAdvices, Tags);
         }
@@ -42,9 +42,16 @@ public class Application extends Controller {
     }
 	
 	public static void show(Long id ,boolean reviewers) {
-        Advice advice = Advice.findById(id);
-        String randomID = Codec.UUID();
-        render(advice, randomID,reviewers);
+	if (Security.isConnected()) {
+		Advice advice = Advice.findById(id);
+        	String randomID = Codec.UUID();
+		User user = User.find("byEmail", Security.connected()).first();
+		render(advice, randomID, reviewers, user);
+	} else {
+        	Advice advice = Advice.findById(id);
+        	String randomID = Codec.UUID();
+        	render(advice, randomID,reviewers);
+	}
     }
 
 
@@ -63,9 +70,9 @@ public class Application extends Controller {
                                    String randomID)
     {
         Advice advice = Advice.findById(adviceId);
-        validation.equals(
-                          code, Cache.get(randomID)
-                          ).message("Invalid code. Please type it again");
+        if(!Play.id.equals("test")) {
+            validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
+        }
         if(validation.hasErrors()) {
             render("Application/show.html", advice, randomID);
         }
@@ -76,7 +83,7 @@ public class Application extends Controller {
     }
     
     public static void postReview(Long adviceId ,@Required (message="A mark is required")  int mark,
-												 @Required(message="Author is required") String author) {
+                                  @Required(message="Author is required") String author) {
         Advice advice = Advice.findById(adviceId);
         validation.isTrue("invalid",mark>0 && mark <= 10).message("Invalid value for mark. Insert a number between 1 and 10");
         if(validation.hasErrors()) {
@@ -98,9 +105,11 @@ public class Application extends Controller {
     }
     
     public static void newMember(@Required(message = "email required") String email,
-                              @Required(message = "full name required") String fullName,
-                              @Required(message = "password required") String password,
-                              @Required(message = "password required") String confirm)
+                                 @Required(message = "full name required") String fullName,
+                                 @Required(message = "password required") String password,
+                                 @Required(message = "password required") String confirm,
+                                 boolean admin
+                                 )
     {
         if (!confirm.equals(password)) {
             // TODO: generate error
@@ -120,7 +129,7 @@ public class Application extends Controller {
         if (recherche.equals("")) {
             // TODO: generate error
             /*index();
-            return;*/
+              return;*/
         }
         List<Advice> myList;
         String qr = "select distinct a from Advice a where upper(a.title) like upper('%" + recherche + "%')";

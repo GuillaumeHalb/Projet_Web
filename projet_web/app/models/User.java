@@ -18,6 +18,7 @@ public class User extends Model {
 
     public String fullname;
     public boolean isAdmin;
+    public boolean authorized;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Basket> baskets;
@@ -29,7 +30,12 @@ public class User extends Model {
     }
     
     public static User connect(String email, String password) {
-        return find("byEmailAndPassword", email, password).first();
+        User user = find("byEmailAndPassword", email, password).first();
+        if (!user.isAdmin || (user.isAdmin && user.authorized) ) {
+            return user;
+        } else {
+            return null;
+        }
     }
  
     public String toString() {

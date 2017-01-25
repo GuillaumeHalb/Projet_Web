@@ -82,6 +82,7 @@ User(bob):
     password:       secret
     fullname:       Bob
     isAdmin:        true
+    authorized:     true
     
 User(jeff):
     email:          jeff@gmail.com
