@@ -73,7 +73,7 @@ public class Application extends Controller {
     }
     
     public static void postReview(Long adviceId,
-                                  @Required (message="A mark is required")  int mark,
+                                  @Required(message="A mark is required") int mark,
                                   @Required(message="Author is required") String author,
                                   String code,
                                   String randomID) {
@@ -121,6 +121,7 @@ public class Application extends Controller {
         flash.success("Thanks for registering");
         Cache.delete(randomID);
         List<User> users = User.find("select distinct u from User u").fetch();
+        User.connect(email, password);
         index();
     }
     

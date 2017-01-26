@@ -8,13 +8,6 @@
 #{/else}
  
 #{form @save(advice?.id)}
- 
-    #{ifErrors}
-        <p class="error">
-            Please correct these errors.
-        </p>
-    #{/ifErrors}
-     
     <p>
         #{field 'title'}
         <label>advice title:</label>
@@ -30,7 +23,7 @@
         <textarea name="${field.name}">
           ${advice?.content}
         </textarea>
-        <span class="error">#{error 'advice.title' /}</span>
+        <span class="error">#{error 'advice.content' /}</span>
         #{/field}
     </p>
 
@@ -47,6 +40,7 @@
       <label>Enter the expected value<label>
           <input type="number"
       name="${field.name}" value="${advice?.expectedValue}" />
+      <span class="error">#{error 'advice.expectedValue' /}</span>
       #{/field}
     </p>
  
