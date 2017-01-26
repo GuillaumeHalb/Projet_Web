@@ -20,19 +20,10 @@ public class Application extends Controller {
 		List<Tag> Tags = Tag.find("order by name desc").fetch();
         if (Security.isConnected()) {
             User user = User.find("byEmail", Security.connected()).first();
-            render(frontAdvice, olderAdvices, Tags,user);
+            render(frontAdvice, olderAdvices, Tags, user);
         } else {
             render(frontAdvice, olderAdvices, Tags);
         }
-    }
-    
-    public static void connected(User user) {
-        Advice frontAdvice = Advice.find("order by postedAt desc").first();
-        List<Advice> olderAdvices = Advice.find(
-                                                "order by postedAt desc"
-                                                ).from(1).fetch(10);
-        List<Tag> Tags = Tag.find("order by name desc").fetch();
-        render(user, frontAdvice, olderAdvices, Tags);
     }
 	
     @Before
@@ -119,10 +110,7 @@ public class Application extends Controller {
         flash.success("Thanks for registering");
         
         List<User> users = User.find("select distinct u from User u").fetch();
-        for (User u : users) {
-            System.out.println("user: " + u);
-        }
-        connected(usr);
+        index();
     }
     
     public static void search(@Required(message = "String is required")String recherche) {
