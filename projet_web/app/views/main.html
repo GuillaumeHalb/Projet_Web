@@ -31,7 +31,12 @@
             <a href="@{Secure.logout()}">Log out</a>
           </li>
           <li>
+            #{if get('user').isAdmin}
             <a href="@{Admin.index()}">Admin Area</a>
+            #{/if}
+            #{else}
+            <a href="@{Admin.index()}">User Area</a>
+            #{/else}
           </li>
           #{/if}
           #{else}
