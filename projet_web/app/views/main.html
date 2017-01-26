@@ -68,14 +68,12 @@
     <p class="success">${flash.success}</p>
     #{/if}
     
-    <div class="errors">
     #{ifErrors}
-    #{errors}
-    <li class="error">${error}</li>
-    #{/errors}
-    #{/ifErrors}
+    <div class="errors">
+        <span> ${errors[0]}</span>
     </div>
-        
+    #{/ifErrors}
+    
     <div id="main">
       #{doLayout /} 
     </div>

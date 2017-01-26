@@ -51,7 +51,7 @@
 <h3>Post a comment</h3>
 
 #{form @Application.postComment(advice.id)}
-
+<!--
 #{ifErrors}
 #{if !(errors[0].getKey().matches("invalid"))}
 <p class="error">
@@ -59,6 +59,7 @@
 </p>
 #{/if}
 #{/ifErrors}
+-->
 <p>
   <label for="author">Your name: </label>
   <input type="text" name="author" id="author" value="${params.author}" />
