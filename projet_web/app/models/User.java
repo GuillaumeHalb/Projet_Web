@@ -31,11 +31,15 @@ public class User extends Model {
     
     public static User connect(String email, String password) {
         User user = find("byEmailAndPassword", email, password).first();
-        if (!user.isAdmin || (user.isAdmin && user.authorized) ) {
-            return user;
-        } else {
-            return null;
-        }
+		if (user!=null) {
+			if (!user.isAdmin || (user.isAdmin && user.authorized) ) {
+				return user;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
     }
  
     public String toString() {
