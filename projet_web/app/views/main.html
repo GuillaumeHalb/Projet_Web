@@ -44,7 +44,7 @@
             <a href="@{Admin.index()}">Log in to write something</a>
           </li>
           <li id="sign-up">
-            <a href="@{Application.signUp()}">New member ? Sign up</a>
+            <a href="@{Application.signUp(randomID)}">New member ? Sign up</a>
           </li>
           #{/else}
         </ul>
@@ -64,6 +64,18 @@
       </div>
     </div>
     
+    #{if flash.success}
+    <p class="success">${flash.success}</p>
+    #{/if}
+    
+    <div class="errors">
+    #{ifErrors}
+    #{errors}
+    <li class="error">${error}</li>
+    #{/errors}
+    #{/ifErrors}
+    </div>
+        
     <div id="main">
       #{doLayout /} 
     </div>

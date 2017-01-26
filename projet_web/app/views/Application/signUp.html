@@ -3,6 +3,9 @@
 
 <ul id="parameters">
   #{form @Application.newMember()}
+  
+
+  
   <li id="email">
     <label for="email">Email: </label>
     <input type="email" name="email" id="email" value="${params.email}" />
@@ -24,6 +27,15 @@
     <label for="admin">Admin account ? </label>
     <input type="checkbox" value="${params.admin}">
   </li>
+  
+  <p>
+  <label for="code">Please type the code below: </label>
+  <img src="@{Application.captcha(randomID)}" />
+  <br />
+  <input type="text" name="code" id="code" size="18" value="" />
+  <input type="hidden" name="randomID" value="${randomID}" />
+  </p>
+
   
   <li id="valid">
     <input type="submit" value="Sign up!"/>

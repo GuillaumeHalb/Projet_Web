@@ -351,13 +351,17 @@ form p img {
     border-width : 2 pt;
 }
 
-form .error {
+.errors {
     color: #fff;
     font-size: 90%;
     padding: 3px 5px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -webkit-box-shadow: 0 2px 0 #800;
+    background: red;
+    color: black;
+    padding-left: 10px;
+    list-style: none;
 }
 
 form p {

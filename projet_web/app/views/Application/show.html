@@ -2,10 +2,6 @@
 #{set title:advice.title /}
 #{set user:user /}
 
-#{if flash.success}
-<p class="success">${flash.success}</p>
-#{/if}
-
 #{display advice:advice, as:'full' /}
 
 #{if reviewers}
@@ -23,14 +19,14 @@
 
   #{form @Application.postReview(advice.id)}
 
-  #{ifErrors}
+<!--  #{ifErrors}
   #{if errors[0].getKey().matches("invalid")}
   <p class="error">
     ${errors[0]}
   </p>
   #{/if}
   #{/ifErrors}
-  
+  -->
   <p>
 	<label for="author">Your name: </label>
 	<input type="text" name="author" id="author" value="${params.author}" />
@@ -39,10 +35,17 @@
   <p>
     <label for="mark"> Give a mark from 1 to 10: </label>
     <input type="number" name="mark" min="1" max="10" id="mark" value="${params.mark}"
-           </p>
+  </p>
   <p>
-    <input type="submit" value="Submit your rating" />
-  </p> 
+  <label for="code">Please type the code below: </label>
+  <img src="@{Application.captcha(randomID)}" />
+  <br />
+  <input type="text" name="code" id="code" size="18" value="" />
+  <input type="hidden" name="randomID" value="${randomID}" />
+  </p>
+  <p>
+  <input type="submit" value="Submit your rating" />
+  </p>
   #{/form}
 </div>
 <h3>Post a comment</h3>
