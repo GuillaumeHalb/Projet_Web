@@ -89,6 +89,36 @@ public class BasicTest extends UnitTest {
 	    assertNotNull(secondComment.postedAt);
 	}
 	
+		@Test
+	public void adviceMark() {
+	    // Create a new user and save it
+	    User bob = new User("bob@gmail.com", "secret", "Bob").save();
+	 
+	    // Create a new advice
+	    Advice bobAdvice = new Advice(bob, "My first advice", "Hello world").save();
+	 
+	    // advice a first comment
+	    new Review(bobAdvice,"Jeff",3 ).save();
+	    new Review	(bobAdvice, "Tom", 4).save();
+	 
+	    // Retrieve all comments
+	    List<Review> bobAdviceReviews = Review.find("byAdvice", bobAdvice).fetch();
+	 
+	    // Tests
+	    assertEquals(2, bobAdviceReviews.size());
+	 
+	    Review firstReview = bobAdviceReviews.get(0);
+	    assertNotNull(firstReview);
+	    assertEquals("Jeff", firstReview.author);
+	    assertEquals("3", firstReview.mark);
+	 
+	    Review secondReview = bobAdviceReviews.get(1);
+	    assertNotNull(secondReview);
+	    assertEquals("Tom", secondReview.author);
+	    assertEquals(4, secondReview.mark);
+		assertEquals(bobAdvice.totalMark,(3+4)/2);
+	}
+	
 	@Test
 	public void useTheCommentsRelation() {
 	    // Create a new user and save it

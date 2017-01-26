@@ -49,6 +49,17 @@ public class Advice extends Model {
     @OneToMany(mappedBy="advice",cascade=CascadeType.ALL)
 	public List<Review> reviews;
 
+	public Advice(User author, String title, String content) {
+        this.comments = new ArrayList<Comment>();
+        this.tags = new TreeSet<Tag>();
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.postedAt = new Date();
+        this.totalMark = 0;
+        this.expectedValue = 0.0;
+    }
+	
     public Advice(User author, String title, String content, int mark, double value) {
         this.comments = new ArrayList<Comment>();
         this.tags = new TreeSet<Tag>();
