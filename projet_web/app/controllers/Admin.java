@@ -6,6 +6,8 @@ import play.mvc.*;
 import java.util.*;
  
 import models.*;
+import play.data.validation.Required;
+
  
 @With(Secure.class)
 public class Admin extends Controller {
@@ -49,7 +51,12 @@ public class Admin extends Controller {
         render();
     }
      
-    public static void save(Long id, String title, String content, String tags, int mark, double value) {
+    public static void save(Long id,
+                            @Required(message="Title required") String title,
+                            @Required(message="Content required") String content,
+                            String tags,
+                            int mark,
+                            @Required(message="Expected value required") double value) {
         Advice advice;
         if(id == null) {
             // Create advice
@@ -82,8 +89,17 @@ public class Admin extends Controller {
     }
     
 
-    public static void saveBasket(Long id, String name) {
+    public static void saveBasket(Long id,
+                                  @Required(message = "basket name required") String name) {
         Basket basket;
+        
+        if (validation.hasErrors()) {
+            for(play.data.validation.Error error : validation.errors()) {
+                System.out.println(error.message());
+            }
+            baskets();
+        }
+        
         if(id == null) {
             // Create Basket
             User author = User.find("byEmail", Security.connected()).first();

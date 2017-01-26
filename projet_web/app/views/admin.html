@@ -26,8 +26,14 @@
                 </li>
             </ul>
         </div>
-        
+    
         <div id="main">
+    
+    #{ifErrors}
+    <div class="errors">
+        <span> ${errors[0]}</span>
+    </div>
+    #{/ifErrors}
     
     <ul id="adminMenu">
         <li class="${request.controller == 'Admin' ? 'selected' : ''}">
