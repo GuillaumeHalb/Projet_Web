@@ -1,22 +1,23 @@
 /** Main layout **/
 
 html, body {
-    background: #FAEBD7 !important;
-	/*background:radial-gradient(white,#FFF5EE);*/
+    /**background: #FAEBD7 !important;**/
     font-family: Helvetica, Arial, Sans !important;
     color: black;
-}
+    }
 
 body {
     width: 100%;
     margin-top: 0px;
     margin-left: 0px;
+    background-image: url("http://i2.mirror.co.uk/incoming/article7336964.ece/ALTERNATES/s615b/Old-premier-league-logo.jpg");
+    background-color: #cccccc;
+    opacity: 0.85;
 }
 
 /** Blog header **/
 
 #header {
-    background: #8B0000;
     position: relative;
     border: 0 none;
     box-sizing: border-box;
@@ -26,7 +27,12 @@ body {
     vertical-align: baseline;
 }
 
+#admin #header {
+	background: #8b0000;
+}
+
 #head {
+	background: #8B0000;
     display: inline-block;
     position: relative;
     width: 100%;
@@ -41,8 +47,7 @@ body {
     font-weight: bold;
     letter-spacing: -4px;
     text-shadow: 1px 2px 2px #000;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-left: 20px;
 }
 
@@ -84,22 +89,17 @@ body {
 }
 
 #title1 {
-    background: #faebd7;
     padding-top: 20px;
 }
 
 #title {
     background: black;
-    margin-left: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-right: 300px;
+	margin: 20px auto;
+	width: 500px;
     padding: 20px 30px 20px 20px;
     color: #FAEBD7;
     position: relative;
 	border-radius: 10px;
-    -webkit-border-radius: 16px;
-    -moz-border-radius: 16px;
 }
 
 .list-tags {
@@ -569,6 +569,7 @@ tr.odd {
 .crudField .tag.selected {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
+    color:white;
 }
 
 .crudField .error {
