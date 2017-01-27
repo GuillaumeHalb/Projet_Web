@@ -26,10 +26,10 @@
           </li>
           #{if get('user')}
           <li id="user"> Connected as: #{get 'user' /} </li>
-          <li>
+          <li id="log-in">
             <a href="@{Secure.logout()}">Log out</a>
           </li>
-          <li>
+          <li id="sign-up">
             #{if get('user').isAdmin}
             <a href="@{Admin.index()}">Admin Area</a>
             #{/if}

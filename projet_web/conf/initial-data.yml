@@ -1,79 +1,64 @@
 # Tags : about 20 companies
 
-Tag(apple):
-    name:           Apple
+Tag(manchesterunited):
+    name:           Manchester United
  
-Tag(abbVie):
-    name:           AbbVie
+Tag(arsenal):
+    name:           Arsenal
  
-Tag(amazon):
-    name:           Amazon
+Tag(manchestercity):
+    name:           Manchester City
  
-Tag(americanExpress):
-    name:           AmericanExpress
+Tag(liverpool):
+    name:           Liverpool
 
-Tag(boeing):
-    name:           Boeing
+Tag(everton):
+    name:           Everton
 
-Tag(bankOfAmerica):
-    name:           BankOfAmerica
+Tag(stoke):
+    name:           Stoke City
 
-Tag(blackrock):
-    name:           Blackrock
+Tag(chelsea):
+    name:           Chelsea
 
-Tag(colgate):
-    name:           Colgate
+Tag(tottenham):
+    name:           Tottenham
 
-Tag(cisco):
-    name:           Cisco
+Tag(wba):
+    name:           WBA
 
-Tag(waltDisney):
-    name:           WaltDisney
+Tag(westham):
+    name:           West Ham
 
-Tag(ford):
-    name:           Ford
+Tag(southampton):
+    name:           Southampton
 
-Tag(facebook):
-    name:           Facebook
+Tag(bournemouth):
+    name:           Bournemouth
 
-Tag(fedEx):
-    name:           FedEx
+Tag(burnley):
+    name:           Burnley
 
-Tag(fox):
-    name:           Fox
+Tag(watford):
+    name:           Watford
 
-Tag(generalMotors):
-    name:           GeneralMotors
+Tag(leicester):
+    name:           Leicester
  
-Tag(alphabet):
-    name:           Alphabet
+Tag(middlesbrough):
+    name:           Middlesbrough
  
-Tag(goldmanSachs):
-    name:           GoldmanSachs
+Tag(swansea):
+    name:           Swansea
  
-Tag(intel):
-    name:           Intel
+Tag(crystalpalace):
+    name:           Crystal Palace
 
-Tag(jpMorgan):
-    name:           JPMorgan
+Tag(hullcity):
+    name:           Hull City
 
-Tag(cocacola):
-    name:           CocaCola
-
-Tag(mastercard):
-    name:           MasterCard
-
-Tag(mircosoft):
-    name:           Microsoft
-
-Tag(nike):
-    name:           Nike
-
-Tag(oracle):
-    name:           Oracle
-
-Tag(paypal):
-    name:           PayPal
+Tag(sunderland):
+    name:           Sunderland
 
 #users
 
@@ -101,54 +86,60 @@ User(joe):
     fullname:       Joe  
 
 Advice(firstBobAdvice):
-    title:          Facebook about to grow 8%
+    title:          Alexis Sanchez in China ?
     postedAt:       2009-06-14
     author:         bob
-    expectedValue:  8
+    expectedValue:  100000
     tags:
-                    - facebook
+                    - arsenal
     content:        >
-                    According to the current tendancy, Facebook stocks should grow about 8%
+                    According to the Daily Mail, Alexis Sanchez received an offer from Beijing Sporting Club for a salary of 5 millions $ a month.
 
 Advice(secondBobAdvice):
-    title:          Alphabet 2% down
+    title:          Diego Costa will wait for the summer mercato
     postedAt:       2009-03-25
     author:         bob
-    expectedValue:  2
+    expectedValue:  8000
     tags:
-                    - alphabet
+                    - chelsea
+                    - liverpool
     content:        >
-                    You maybe shouldn't invest in that stock
+                    Once announced that he was leaving for Liverpool, Chelsea's manager finally managed to keep his best goaler. 
                     
 Advice(jeffAdvice):
-    title:          Coca-Cola's new product
+    title:          Another defeat for Leicester
     postedAt:       2009-06-06
     author:         jeff
     expectedValue:  12
     tags:
-                    - cocacola
+                    - leicester
     content:        >
-                    Coca-cola is about to lauch a new product, their stock are expected to grow up to 	12%.
+                    Last year surprising champion and their manager lost once again for this season and are now 15th.
                     
 Comment(c1):
     author:         Guest
     content:        >
-                    You are right !
+                    What an offer ! how could he possibly resist ?
     postedAt:       2009-06-14
     advice:           firstBobAdvice
     
 Comment(c2):
     author:         Mike
     content:        >
-                    I knew that ...
+                    I hope that he will stay in Premier League
     postedAt:       2009-06-15
     advice:           firstBobAdvice    
     
 Comment(c3):
     author:         Tom
     content:        >
-                    This Advice is useless ?
+                    Maybe it is time for him to leave this club.
     postedAt:       2009-04-05
     advice:           secondBobAdvice    
     
-
+Comment(c4):
+    author:         Arsene Wenger
+    content:        >
+                    Not again ! I knew that Kante should have stayed.
+    postedAt:       2009-04-05
+    advice:           jeffAdvice

@@ -212,7 +212,7 @@ a {
 
 .Advice .mark {
     color : #faebd7;
-    display : block;
+    display : inline-block;
     padding: 10px;
     margin: 0px 0 10px 0;
     font-size: 85%;
@@ -703,5 +703,14 @@ tr.odd {
     color : #FF7F50;
     display: inline-block;
     padding-left: 8px;
+    margin-bottom: 5px;
 }
 
+.expectedValue {
+	display: inline-block;
+	color : #faebd7;
+	padding: 10px;
+    margin: 0px 0 10px 0;
+    font-size: 85%;
+    font-weight: bold;
+}
