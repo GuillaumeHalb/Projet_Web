@@ -11,6 +11,9 @@ public class Users extends CRUD {
         User user = User.findById(id);
         user.authorized = !user.authorized;
         user.save();
+        flash.success("Authorization changed for " + user);
+        Admin.index();
+
     }
 
 }

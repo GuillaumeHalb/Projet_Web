@@ -35,6 +35,10 @@
     </div>
     #{/ifErrors}
     
+    #{if flash.success}
+    <p class="success">${flash.success}</p>
+    #{/if}
+    
     <ul id="adminMenu">
         <li class="${request.controller == 'Admin' ? 'selected' : ''}">
             <a href="@{Admin.index()}">My advices</a>
